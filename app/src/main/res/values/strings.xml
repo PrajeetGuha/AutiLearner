@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AutiLearner</string>
+    <string name="tagline">The new, fun platform for your special needs child</string>
+    <string name="new_start">Let\'s Begin</string>
 </resources>
