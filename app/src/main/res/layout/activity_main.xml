@@ -4,74 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scaleX="2"
-    android:scaleY="2"
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="240dp"
+        android:id="@+id/logo"
+        android:layout_width="191dp"
+        android:layout_height="201dp"
+        android:layout_marginTop="112dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="115dp"
+        android:id="@+id/tagline"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/Kollektif"
+        android:fontFamily="@font/kollektif"
         android:gravity="center"
-        android:text="TextView"
-        android:textSize="10sp"
+        android:text="@string/tagline"
+        android:textSize="18sp"
         android:translationY="-100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/name"
         tools:text="@string/tagline" />
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="228dp"
-        android:layout_height="108dp"
-        android:layout_marginTop="37dp"
+        android:id="@+id/name"
+        android:layout_width="267dp"
+        android:layout_height="167dp"
+        android:layout_marginTop="20dp"
         android:scaleX="1"
         android:scaleY="1"
         android:translationY="-70dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
         app:srcCompat="@drawable/ic__name" />
 
     <Button
-        android:id="@+id/button"
-        style="@style/Widget.Material3.Button.Icon"
-        android:layout_width="190dp"
-        android:layout_height="40dp"
-        android:fontFamily="@font/Kollektif"
-        android:text="@string/new_start"
-        android:textSize="12sp"
+        android:id="@+id/button_letsBegin"
+        style="@style/Theme.primaryButton"
+        android:layout_marginTop="48dp"
+        android:text="@string/newBegin"
         android:translationY="-70dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/tagline" />
 
     <Button
-        android:id="@+id/button2"
-        style="@style/Widget.Material3.Button.Icon"
-        android:layout_width="190dp"
-        android:layout_height="40dp"
-        android:fontFamily="@font/Kollektif"
-        android:text="@string/new_start"
-        android:textSize="12sp"
+        android:id="@+id/button_alreadyAccount"
+        style="@style/Theme.secondaryButton"
+        android:text="@string/alreadyAccount"
+        android:layout_width="300dp"
         android:translationY="-70dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/button_letsBegin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

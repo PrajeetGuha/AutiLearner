@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">AutiLearner</string>
-    <string name="tagline">The new, fun platform for your special needs child</string>
-    <string name="new_start">Let\'s Begin</string>
+    <string name="tagline">The new, fun platform for your special needs child!</string>
+    <string name="newBegin">Let\'s begin</string>
+    <string name="alreadyAccount">Already have an account?</string>
+    <string name="createNewAccount">Create new Account</string>
+    <string name="alreadyRegistered">Already Registered?</string>
+    <string name="login">Login</string>
+    <string name="signup">Sign Up</string>
+    <string name="name">Please enter your name</string>
+    <string name="email">Please enter your Email</string>
+    <string name="password">Please enter your Password</string>
 </resources>
