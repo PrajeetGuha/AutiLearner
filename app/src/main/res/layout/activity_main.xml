@@ -1,69 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="191dp"
-        android:layout_height="201dp"
-        android:layout_marginTop="112dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
-
-    <TextView
-        android:id="@+id/tagline"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/kollektif"
-        android:gravity="center"
-        android:text="@string/tagline"
-        android:textSize="18sp"
-        android:translationY="-100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name"
-        tools:text="@string/tagline" />
-
-    <ImageView
-        android:id="@+id/name"
-        android:layout_width="267dp"
-        android:layout_height="167dp"
-        android:layout_marginTop="20dp"
-        android:scaleX="1"
-        android:scaleY="1"
-        android:translationY="-70dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo"
-        app:srcCompat="@drawable/ic__name" />
-
-    <Button
-        android:id="@+id/button_letsBegin"
-        style="@style/Theme.primaryButton"
-        android:layout_marginTop="48dp"
-        android:text="@string/newBegin"
-        android:translationY="-70dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tagline" />
-
-    <Button
-        android:id="@+id/button_alreadyAccount"
-        style="@style/Theme.secondaryButton"
-        android:text="@string/alreadyAccount"
-        android:layout_width="300dp"
-        android:translationY="-70dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_letsBegin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

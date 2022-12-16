@@ -8,13 +8,16 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="AutiLearner"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AutiLearner"
+        android:theme="@style/HiddenTitleTheme"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"
+            tools:ignore="LockedOrientationActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +25,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".LoginActivity"
+            android:label="@string/activity_login"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
+            android:exported="true">
+        </activity>
+        <activity android:name=".RegisterActivity"
+            android:label="@string/activity_register"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
+            android:exported="true">
+        </activity>
+        <activity android:name=".MainActivity"
+            android:label="@string/activity_main"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>

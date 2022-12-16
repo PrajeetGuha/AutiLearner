@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/bubble"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="false"
+        android:scaleType="centerCrop"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="bubble.json"
+        app:lottie_loop="true"
+        app:lottie_speed="1" />
+
+    <TextView
+        android:id="@+id/createNewAccountText"
+        style="@style/MainText"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="50dp"
+        android:text="@string/createNewAccount"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/redirectToLoginLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createNewAccountText">
+
+        <TextView
+            android:id="@+id/alreadyRegisteredText"
+            style="@style/MainText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alreadyRegistered"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/redirectTologinText"
+            style="@style/RedirectText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/registerFormLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/redirectToLoginLayout">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailLabel"
+            style="@style/FieldBoxLayout"
+            android:hint="@string/email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailField"
+                style="@style/TextField"
+                android:inputType="textEmailAddress" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordLabel"
+            style="@style/FieldBoxLayout"
+            android:hint="@string/password"
+            app:endIconMode="password_toggle"
+            app:layout_constraintTop_toBottomOf="@+id/emailLabel">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordField"
+                style="@style/TextField"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/confirmPasswordLabel"
+            style="@style/FieldBoxLayout"
+            android:hint="@string/confirm_password"
+            app:endIconMode="password_toggle"
+            app:layout_constraintTop_toBottomOf="@+id/passwordLabel">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/confirmPasswordField"
+                style="@style/TextField"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/registerbutton"
+        style="@style/primaryButton"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/signup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerFormLayout" />
+
+    <TextView
+        android:id="@+id/signupwithText"
+        style="@style/NormalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/alternate_signup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerbutton" />
+
+    <LinearLayout
+        android:id="@+id/socialRegisterLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signupwithText">
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

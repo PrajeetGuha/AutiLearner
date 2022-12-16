@@ -10,4 +10,5 @@
     <color name="secondaryTextColor">#ffffff</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+    <color name="blendColor">#3D7AD3</color>
 </resources>

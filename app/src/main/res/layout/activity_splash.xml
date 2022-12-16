@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashActivity">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loading"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:layout_centerInParent="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="puzzle.json"
+        app:lottie_loop="false"
+        app:lottie_speed="1" />
+
+    <TextView
+        android:id="@+id/tagline"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-180dp"
+        android:text="@string/tagline"
+        android:textAlignment="center"
+        android:textAppearance="@style/NormalText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loading" />
+
+    <Button
+        android:id="@+id/loginbutton"
+        style="@style/primaryButton"
+        android:layout_marginTop="80dp"
+        android:text="@string/alreadyAccount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tagline" />
+
+    <Button
+        android:id="@+id/registerbutton"
+        style="@style/secondaryButton"
+        android:layout_marginTop="15dp"
+        android:text="@string/createNewAccount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginbutton" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

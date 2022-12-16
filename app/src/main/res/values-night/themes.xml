@@ -13,24 +13,4 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
-    <style name="Theme.primaryButton" parent="Widget.Material3.Button.Icon">
-        <item name="android:backgroundTint">@color/primaryLightColor</item>
-        <item name="android:fontFamily">@font/kollektif_bold</item>
-        <item name="android:textColor">@color/primaryTextColor</item>
-    </style>
-    <style name="Theme.secondaryButton" parent="Widget.Material3.Button.Icon">
-        <item name="android:backgroundTint">@color/secondaryLightColor</item>
-        <item name="android:fontFamily">@font/kollektif_bold</item>
-        <item name="android:textColor">@color/secondaryTextColor</item>
-        <item name="android:textSize">10sp</item>
-        <item name="android:layout_height">40dp</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:textAllCaps">true</item>
-    </style>
-    <style name="secondaryMainText">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textAlignment">center</item>
-        <item name="android:textColor">@color/secondaryLightColor</item>
-    </style>
 </resources>
