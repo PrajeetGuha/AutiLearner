@@ -8,8 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import com.airbnb.lottie.LottieAnimationView
-import com.google.firebase.auth.FirebaseAuth
-import stcet.project.autilearner.helper.Auth
+import stcet.project.autilearner.helper.Identity
 
 class SplashActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -26,7 +25,7 @@ class SplashActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onStart(){
         super.onStart()
-        val auth = Auth()
+        val auth = Identity()
         if (auth.checkExistingUser()){
             val main = Intent(this,MainActivity::class.java)
             startActivity(main)

@@ -5,13 +5,23 @@ import java.util.regex.Pattern
 
 class Validation {
 
-    fun validateEmail(email : String) : Boolean{
-        return !email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    fun validateEmail(email : String) : Int{
+        return if (email.isEmpty())
+            1
+        else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
+            2
+        else
+            3
     }
 
-    fun validatePassword(password : String) : Boolean{
-        val PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{4,}$"
-        return Pattern.compile(PASSWORD_PATTERN).matcher(password).matches()
+    fun validatePassword(password : String) : Int{
+        val PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{4,}$"
+        return if (password.isEmpty())
+            1
+        else if (!Pattern.compile(PASSWORD_PATTERN).matcher(password).matches())
+            2
+        else
+            3
     }
 
     fun checkPasswordMatches(password: String, reenteredPassword: String) : Boolean{
