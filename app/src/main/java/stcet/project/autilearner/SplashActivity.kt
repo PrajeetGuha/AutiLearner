@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import com.airbnb.lottie.LottieAnimationView
-import stcet.project.autilearner.helper.Identity
+import stcet.project.autilearner.helper.AuthO
 
 class SplashActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -25,7 +25,7 @@ class SplashActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onStart(){
         super.onStart()
-        val auth = Identity()
+        val auth = AuthO()
         if (auth.checkExistingUser()){
             val main = Intent(this,MainActivity::class.java)
             startActivity(main)

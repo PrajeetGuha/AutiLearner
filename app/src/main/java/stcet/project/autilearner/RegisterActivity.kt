@@ -6,12 +6,10 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.addTextChangedListener
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import stcet.project.autilearner.helper.Identity
+import stcet.project.autilearner.helper.AuthO
 import stcet.project.autilearner.helper.Validation
 
 class RegisterActivity : AppCompatActivity(), View.OnClickListener {
@@ -88,7 +86,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
         if ( checked == 3 ){
             Log.d("VALIDATION","All data is validated")
-            val register = Identity()
+            val register = AuthO()
             register.registerUser(this,emailView.text.toString(), passwordView.text.toString())
         }
     }

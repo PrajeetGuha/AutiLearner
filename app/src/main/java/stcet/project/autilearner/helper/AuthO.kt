@@ -8,7 +8,7 @@ import com.google.firebase.auth.FirebaseUser
 import stcet.project.autilearner.MainActivity
 import stcet.project.autilearner.RegisterActivity
 
-class Identity {
+class AuthO {
 
     fun checkExistingUser() : Boolean{
         return FirebaseAuth.getInstance().currentUser != null
