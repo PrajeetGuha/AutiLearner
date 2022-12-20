@@ -7,44 +7,50 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import stcet.project.autilearner.helper.AuthO
 import stcet.project.autilearner.helper.Validation
 
-class RegisterFragment : Fragment(R.layout.fragment_register), View.OnClickListener {
+class RegisterFragment : Fragment(R.layout.fragment_register){
 
-    private lateinit var fView : View
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fView = view
 
-        view.findViewById<Button>(R.id.registerbutton).setOnClickListener(this)
-        view.findViewById<TextView>(R.id.redirectTologinText).setOnClickListener(this)
-    }
-
-    override fun onClick(view: View?) {
-        when(view?.id){
-
-            R.id.registerbutton -> {
-                checkAllFields()
-            }
-            R.id.redirectTologinText -> {
-                (activity as AuthActivity).useLoginFragment()
-            }
-        }
-    }
-
-    private fun checkAllFields(){
+        val emailLabel = view.findViewById<TextInputLayout>(R.id.emailLabel)
+        val emailView = view.findViewById<TextInputEditText>(R.id.emailField)
+        val passwordLabel = view.findViewById<TextInputLayout>(R.id.passwordLabel)
+        val passwordView = view.findViewById<TextInputEditText>(R.id.passwordField)
+        val reenteredPasswordLabel = view.findViewById<TextInputLayout>(R.id.confirmPasswordLabel)
+        val reenteredPasswordView = view.findViewById<TextInputEditText>(R.id.confirmPasswordField)
+        val registerButton = view.findViewById<Button>(R.id.registerButton)
+        val redirectText = view.findViewById<TextView>(R.id.redirectTologinText)
         val validate = Validation()
-        val emailLabel = fView.findViewById<TextInputLayout>(R.id.emailLabel)
-        val emailView = fView.findViewById<TextInputEditText>(R.id.emailField)
-        val passwordLabel = fView.findViewById<TextInputLayout>(R.id.passwordLabel)
-        val passwordView = fView.findViewById<TextInputEditText>(R.id.passwordField)
-        val reenteredPasswordLabel = fView.findViewById<TextInputLayout>(R.id.confirmPasswordLabel)
-        val reenteredPasswordView = fView.findViewById<TextInputEditText>(R.id.confirmPasswordField)
+        val auth = AuthO()
+
+        registerButton.setOnClickListener{
+            checkAllFields(view, emailView,emailLabel,passwordView,passwordLabel,reenteredPasswordView,reenteredPasswordLabel,validate,auth)
+        }
+        redirectText.setOnClickListener{
+            (activity as AuthActivity).useLoginFragment()
+        }
+        addTextListener(passwordView,passwordLabel)
+        addTextListener(reenteredPasswordView,reenteredPasswordLabel)
+        addTextListener(emailView,emailLabel)
+    }
+
+    private fun checkAllFields(
+        view: View,
+        emailView : TextInputEditText,
+        emailLabel : TextInputLayout,
+        passwordView : TextInputEditText,
+        passwordLabel : TextInputLayout,
+        reenteredPasswordView : TextInputEditText,
+        reenteredPasswordLabel : TextInputLayout,
+        validate : Validation,
+        register : AuthO){
+
         var checked = 0
 
         when(validate.validateEmail(emailView.text.toString())){
@@ -75,26 +81,19 @@ class RegisterFragment : Fragment(R.layout.fragment_register), View.OnClickListe
             checked += 1
         }
 
-        passwordView.addTextChangedListener( object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-            override fun afterTextChanged(p0: Editable?) {}
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                passwordLabel.error = null
-            }
-        })
-
-        reenteredPasswordView.addTextChangedListener( object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-            override fun afterTextChanged(p0: Editable?) {}
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                reenteredPasswordLabel.error = null
-            }
-        })
-
         if ( checked == 3 ){
             Log.d("VALIDATION","All data is validated")
-            val register = AuthO()
-            register.registerUser(fView.context,emailView.text.toString(), passwordView.text.toString())
+            register.registerUser(view.context,emailView.text.toString(), passwordView.text.toString())
         }
+    }
+
+    private fun addTextListener(textView: TextInputEditText, textLabel : TextInputLayout){
+        textView.addTextChangedListener( object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun afterTextChanged(p0: Editable?) {}
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                textLabel.error = null
+            }
+        })
     }
 }

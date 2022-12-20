@@ -101,13 +101,36 @@
         app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
     <LinearLayout
-        android:id="@+id/socialRegisterLayout"
+        android:id="@+id/socialLoginLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/loginWithText">
+
+        <ImageButton
+            android:id="@+id/GglLogin"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/googleg_standard_color_18" />
+
+        <ImageButton
+            android:id="@+id/McrosftLogin"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/microsoft___logo_1000x1000" />
+
+        <ImageButton
+            android:id="@+id/FbLogin"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/facebook_icon_2013" />
 
     </LinearLayout>
 

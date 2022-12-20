@@ -8,7 +8,7 @@
         android:id="@+id/createNewAccountText"
         style="@style/MainText"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="50dp"
         android:text="@string/createNewAccount"
         android:textSize="40sp"
@@ -91,17 +91,17 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/registerbutton"
+        android:id="@+id/registerButton"
         style="@style/primaryButton"
         android:layout_width="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/signupButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerFormLayout" />
 
     <TextView
-        android:id="@+id/signupwithText"
+        android:id="@+id/signupWithText"
         style="@style/NormalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -109,16 +109,39 @@
         android:text="@string/alternate_signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerbutton" />
+        app:layout_constraintTop_toBottomOf="@+id/registerButton" />
 
     <LinearLayout
         android:id="@+id/socialRegisterLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/signupwithText">
+        app:layout_constraintTop_toBottomOf="@id/signupWithText">
+
+        <ImageButton
+            android:id="@+id/GglRegister"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/googleg_standard_color_18" />
+
+        <ImageButton
+            android:id="@+id/McrosftRegister"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/microsoft___logo_1000x1000" />
+
+        <ImageButton
+            android:id="@+id/FbRegister"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/facebook_icon_2013" />
 
     </LinearLayout>
 

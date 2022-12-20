@@ -12,4 +12,9 @@
     <color name="black">#000000</color>
     <color name="blendColor">#3D7AD3</color>
     <color name="textHint">#757575</color>
+    <color name="orange">#F25022</color>
+    <color name="green">#7FBA00</color>
+    <color name="blue">#00A4EF</color>
+    <color name="yellow">#FFB900</color>
+    <color name="darkBlue">#3b5998</color>
 </resources>

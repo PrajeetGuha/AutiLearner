@@ -52,6 +52,7 @@
         <item name="boxCornerRadiusBottomStart">25dp</item>
         <item name="boxCornerRadiusTopEnd">25dp</item>
         <item name="boxCornerRadiusTopStart">25dp</item>
+        <item name="errorEnabled">true</item>
     </style>
     <style name="TextField" parent="NormalText">
         <item name="android:textSize">15sp</item>
