@@ -6,19 +6,23 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import stcet.project.autilearner.helper.AuthO
 import stcet.project.autilearner.helper.Validation
 
-class RegisterActivity : AppCompatActivity(), View.OnClickListener {
+class RegisterFragment : Fragment(R.layout.fragment_register), View.OnClickListener {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+    private lateinit var fView : View
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        fView = view
 
-        findViewById<Button>(R.id.registerbutton).setOnClickListener(this)
+        view.findViewById<Button>(R.id.registerbutton).setOnClickListener(this)
+        view.findViewById<TextView>(R.id.redirectTologinText).setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
@@ -27,17 +31,20 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
             R.id.registerbutton -> {
                 checkAllFields()
             }
+            R.id.redirectTologinText -> {
+                (activity as AuthActivity).useLoginFragment()
+            }
         }
     }
 
     private fun checkAllFields(){
         val validate = Validation()
-        val emailLabel = findViewById<TextInputLayout>(R.id.emailLabel)
-        val emailView = findViewById<TextInputEditText>(R.id.emailField)
-        val passwordLabel = findViewById<TextInputLayout>(R.id.passwordLabel)
-        val passwordView = findViewById<TextInputEditText>(R.id.passwordField)
-        val reenteredPasswordLabel = findViewById<TextInputLayout>(R.id.confirmPasswordLabel)
-        val reenteredPasswordView = findViewById<TextInputEditText>(R.id.confirmPasswordField)
+        val emailLabel = fView.findViewById<TextInputLayout>(R.id.emailLabel)
+        val emailView = fView.findViewById<TextInputEditText>(R.id.emailField)
+        val passwordLabel = fView.findViewById<TextInputLayout>(R.id.passwordLabel)
+        val passwordView = fView.findViewById<TextInputEditText>(R.id.passwordField)
+        val reenteredPasswordLabel = fView.findViewById<TextInputLayout>(R.id.confirmPasswordLabel)
+        val reenteredPasswordView = fView.findViewById<TextInputEditText>(R.id.confirmPasswordField)
         var checked = 0
 
         when(validate.validateEmail(emailView.text.toString())){
@@ -68,7 +75,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
             checked += 1
         }
 
-        passwordView.addTextChangedListener( object : TextWatcher{
+        passwordView.addTextChangedListener( object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(p0: Editable?) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -76,7 +83,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
             }
         })
 
-        reenteredPasswordView.addTextChangedListener( object : TextWatcher{
+        reenteredPasswordView.addTextChangedListener( object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(p0: Editable?) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -87,7 +94,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
         if ( checked == 3 ){
             Log.d("VALIDATION","All data is validated")
             val register = AuthO()
-            register.registerUser(this,emailView.text.toString(), passwordView.text.toString())
+            register.registerUser(fView.context,emailView.text.toString(), passwordView.text.toString())
         }
     }
 }

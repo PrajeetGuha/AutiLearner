@@ -21,6 +21,7 @@ class SplashActivity : AppCompatActivity(), View.OnClickListener {
         startAnimations()
 
         findViewById<Button>(R.id.registerbutton).setOnClickListener(this)
+        findViewById<Button>(R.id.loginbutton).setOnClickListener(this)
     }
 
     override fun onStart(){
@@ -36,8 +37,14 @@ class SplashActivity : AppCompatActivity(), View.OnClickListener {
         when(view?.id){
 
             R.id.registerbutton -> {
-                val register = Intent(this,RegisterActivity::class.java)
-                startActivity(register)
+                val auth = Intent(this,AuthActivity::class.java)
+                auth.putExtra("Register?","1")
+                startActivity(auth)
+            }
+            R.id.loginbutton -> {
+                val auth = Intent(this,AuthActivity::class.java)
+                auth.putExtra("Register?","0")
+                startActivity(auth)
             }
         }
     }

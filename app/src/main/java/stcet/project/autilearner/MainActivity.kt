@@ -12,6 +12,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val auth = AuthO()
-        findViewById<TextView>(R.id.temporary).text = auth.getUser().toString()
+        findViewById<TextView>(R.id.temporary).text = auth.getUserID()
     }
 }

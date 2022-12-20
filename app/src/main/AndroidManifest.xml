@@ -24,22 +24,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"
-            android:label="@string/activity_login"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
-            android:exported="true">
-        </activity>
-        <activity android:name=".RegisterActivity"
-            android:label="@string/activity_register"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
-            android:exported="true">
-        </activity>
         <activity android:name=".MainActivity"
             android:label="@string/activity_main"
             android:exported="true">
         </activity>
+        <activity android:name=".AuthActivity"
+            android:label="@string/activity_auth"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
+            android:exported="true">
+        </activity>
     </application>
-
 </manifest>
