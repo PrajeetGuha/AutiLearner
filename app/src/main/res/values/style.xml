@@ -13,6 +13,9 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">20sp</item>
     </style>
+    <style name="splashAnimation">
+        <item name="lottie_fileName">owl.json</item>
+    </style>
     <style name="primaryButton" parent="Widget.Material3.Button.Icon">
         <item name="android:backgroundTint">@color/primaryDarkColor</item>
         <item name="android:fontFamily">@font/kollektif_bold</item>

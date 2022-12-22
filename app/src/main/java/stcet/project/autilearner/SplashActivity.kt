@@ -56,13 +56,7 @@ class SplashActivity : AppCompatActivity(), View.OnClickListener {
         val loginbutton = findViewById<Button>(R.id.loginbutton)
         val registerbutton = findViewById<Button>(R.id.registerbutton)
 
-        val viewitems = arrayOf(taglineView,loginbutton,registerbutton)
-
-        animationView.setMinAndMaxFrame(0,30)
-        ObjectAnimator.ofFloat(animationView,"translationY",-200f).apply {
-            duration = animationDuration
-            start()
-        }
+        val viewitems = arrayOf(animationView,taglineView,loginbutton,registerbutton)
 
         for (v in viewitems){
             v.alpha = 0f
