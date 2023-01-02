@@ -3,16 +3,10 @@ package stcet.project.autilearner.helper
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import android.view.View
 import android.widget.Toast
-import androidx.annotation.StringRes
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
-import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.GoogleAuthCredential
-import com.google.firebase.auth.GoogleAuthProvider
-import stcet.project.autilearner.MainActivity
+import stcet.project.autilearner.authentication.MainActivity
 import stcet.project.autilearner.R
 
 class AuthO {
@@ -26,7 +20,7 @@ class AuthO {
             if (it.isSuccessful){
                 Log.d("REGISTER","User successfully registered")
                 Toast.makeText(activity,"Successfully Registered",Toast.LENGTH_SHORT).show()
-                val main = Intent(activity,MainActivity::class.java)
+                val main = Intent(activity, MainActivity::class.java)
                 activity.startActivity(main)
             }
             else{
@@ -41,7 +35,7 @@ class AuthO {
             if (it.isSuccessful){
                 Log.d("LOGIN","User successfully logged in")
                 Toast.makeText(activity,"Successfully Logged In",Toast.LENGTH_SHORT).show()
-                val main = Intent(activity,MainActivity::class.java)
+                val main = Intent(activity, MainActivity::class.java)
                 activity.startActivity(main)
             }
             else{

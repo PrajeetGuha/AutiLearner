@@ -1,4 +1,4 @@
-package stcet.project.autilearner
+package stcet.project.autilearner.authentication
 
 import android.animation.ObjectAnimator
 import android.content.Intent
@@ -7,12 +7,15 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import com.airbnb.lottie.LottieAnimationView
+import stcet.project.autilearner.R
 import stcet.project.autilearner.helper.AuthO
 
 class SplashActivity : AppCompatActivity(), View.OnClickListener {
 
     private val animationDuration : Long = 3000
+    private var doubleBackPressed = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,21 +31,26 @@ class SplashActivity : AppCompatActivity(), View.OnClickListener {
         super.onStart()
         val auth = AuthO()
         if (auth.checkExistingUser()){
-            val main = Intent(this,MainActivity::class.java)
+            val main = Intent(this, MainActivity::class.java)
             startActivity(main)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        doubleBackPressed = false
     }
 
     override fun onClick(view : View?){
         when(view?.id){
 
             R.id.registerbutton -> {
-                val auth = Intent(this,AuthActivity::class.java)
+                val auth = Intent(this, AuthActivity::class.java)
                 auth.putExtra("Register?","1")
                 startActivity(auth)
             }
             R.id.loginbutton -> {
-                val auth = Intent(this,AuthActivity::class.java)
+                val auth = Intent(this, AuthActivity::class.java)
                 auth.putExtra("Register?","0")
                 startActivity(auth)
             }
@@ -64,6 +72,15 @@ class SplashActivity : AppCompatActivity(), View.OnClickListener {
                 duration = animationDuration
                 start()
             }
+        }
+    }
+
+    override fun onBackPressed() {
+        if (doubleBackPressed)
+            return super.onBackPressed()
+        else{
+            doubleBackPressed = true
+            Toast.makeText(this,"Press Back Again to Exit App",Toast.LENGTH_SHORT).show()
         }
     }
 

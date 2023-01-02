@@ -1,17 +1,17 @@
-package stcet.project.autilearner
+package stcet.project.autilearner.authentication
 
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import stcet.project.autilearner.R
 import stcet.project.autilearner.helper.AuthO
-import stcet.project.autilearner.helper.Validation
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,8 +29,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             checkAllFields(view,emailView,emailLabel,passwordView,passwordLabel,auth)
         }
         redirectText.setOnClickListener{
-            (activity as AuthActivity).useRegisterFragment()
+            view.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
         }
+
         addTextListener(passwordView,passwordLabel)
         addTextListener(emailView,emailLabel)
     }
