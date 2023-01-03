@@ -23,9 +23,19 @@
     <string name="Login">Login</string>
     <string name="doNotHaveAnAccount">Do not have an Account?</string>
     <string name="register">Register</string>
+    <string name="email_empty">Empty Field</string>
+    <string name="password_empty">Empty Field</string>
+    <string name="email_invalid">Email is Invalid</string>
+    <string name="password_invalid">Password should have at least 8 characters with at least 1 uppercase, 1 lowercase, 1 special and 1 digit character</string>
+    <string name="confirm_password_not_matching">Password did not match</string>
 <!--    email and password string copied-->
     <string name="loginButton">Login</string>
     <string name="alternate_login">Or login with</string>
+
+    <string name="back_button_twice_to_exit">Press Back Again to Exit App</string>
+    <string name="login_issues">Invalid Credentials or Check Internet</string>
+    <string name="register_issue">User Already Registered</string>
+
 
     <string name="web_client_id">754874453404-f9v5tv4sh7cb1jrubjl6ptg6hv3ivea0.apps.googleusercontent.com</string>
 

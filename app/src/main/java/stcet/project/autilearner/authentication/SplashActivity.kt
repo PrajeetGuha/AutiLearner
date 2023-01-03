@@ -30,7 +30,8 @@ class SplashActivity : AppCompatActivity(), View.OnClickListener {
     override fun onStart(){
         super.onStart()
         val auth = AuthO()
-        if (auth.checkExistingUser()){
+        val currentUser = auth.getUser()
+        if (auth.getUser() != null){
             val main = Intent(this, MainActivity::class.java)
             startActivity(main)
         }
@@ -46,12 +47,12 @@ class SplashActivity : AppCompatActivity(), View.OnClickListener {
 
             R.id.registerbutton -> {
                 val auth = Intent(this, AuthActivity::class.java)
-                auth.putExtra("Register?","1")
+                auth.putExtra("Register?",true)
                 startActivity(auth)
             }
             R.id.loginbutton -> {
                 val auth = Intent(this, AuthActivity::class.java)
-                auth.putExtra("Register?","0")
+                auth.putExtra("Register?",false)
                 startActivity(auth)
             }
         }
@@ -80,7 +81,7 @@ class SplashActivity : AppCompatActivity(), View.OnClickListener {
             return super.onBackPressed()
         else{
             doubleBackPressed = true
-            Toast.makeText(this,"Press Back Again to Exit App",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,getString(R.string.back_button_twice_to_exit),Toast.LENGTH_SHORT).show()
         }
     }
 

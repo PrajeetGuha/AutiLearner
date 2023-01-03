@@ -1,11 +1,16 @@
 package stcet.project.autilearner.authentication
 
+import android.content.Context
+import android.content.Intent
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.google.android.material.textfield.TextInputEditText
@@ -26,7 +31,17 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         val auth = AuthO()
 
         loginButton.setOnClickListener{
-            checkAllFields(view,emailView,emailLabel,passwordView,passwordLabel,auth)
+            if (checkAllFields(view,emailView,emailLabel,passwordView,passwordLabel)){
+                if (auth.loginUser(emailView.text.toString(),passwordView.text.toString())) {
+                    Log.d("LOGIN", "User successfully logged in")
+                    val main = Intent(view.context, MainActivity::class.java)
+                    view.context.startActivity(main)
+                }
+                else{
+                    Log.d("LOGIN","User credential is wrong or not registered")
+                    Toast.makeText(view.context,getString(R.string.login_issues),Toast.LENGTH_SHORT).show()
+                }
+            }
         }
         redirectText.setOnClickListener{
             view.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
@@ -41,27 +56,25 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         emailView: TextInputEditText,
         emailLabel: TextInputLayout,
         passwordView: TextInputEditText,
-        passwordLabel: TextInputLayout,
-        login: AuthO) {
+        passwordLabel: TextInputLayout) : Boolean {
 
         var checked = 0
 
         if (emailView.text?.isEmpty() == true)
-            emailLabel.error = "Email required"
+            emailLabel.error = getString(R.string.email_empty)
         else{
             emailLabel.error = null
             checked += 1
         }
 
         if (passwordView.text?.isEmpty() == true)
-            passwordLabel.error = "Password required"
+            passwordLabel.error = getString(R.string.password_empty)
         else{
             passwordLabel.error = null
             checked += 1
         }
 
-        if (checked == 2)
-            login.loginUser(view.context,emailView.text.toString(),passwordView.text.toString())
+        return checked == 2
     }
 
     private fun addTextListener(textView: TextInputEditText, textLabel : TextInputLayout) {

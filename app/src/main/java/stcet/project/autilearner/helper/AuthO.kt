@@ -6,47 +6,33 @@ import android.util.Log
 import android.widget.Toast
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import stcet.project.autilearner.authentication.MainActivity
 import stcet.project.autilearner.R
 
 class AuthO {
 
-    fun checkExistingUser() : Boolean{
-        return FirebaseAuth.getInstance().currentUser != null
+    fun getUser() : FirebaseUser?{
+        return FirebaseAuth.getInstance().currentUser
     }
 
-    fun registerUser(activity : Context, email : String, password : String){
+    fun registerUser(email : String, password : String) : Boolean{
+        var result = false
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).addOnCompleteListener {
-            if (it.isSuccessful){
-                Log.d("REGISTER","User successfully registered")
-                Toast.makeText(activity,"Successfully Registered",Toast.LENGTH_SHORT).show()
-                val main = Intent(activity, MainActivity::class.java)
-                activity.startActivity(main)
-            }
-            else{
-                Log.d("REGISTER","User registration failed")
-                Toast.makeText(activity,"User Already Registered",Toast.LENGTH_SHORT).show()
-            }
+            if (it.isSuccessful)
+                result = true
         }
+        return result
     }
 
-    fun loginUser(activity: Context, email: String, password: String){
+    fun loginUser(email: String, password: String) : Boolean{
+        var result = false
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password).addOnCompleteListener {
             if (it.isSuccessful){
-                Log.d("LOGIN","User successfully logged in")
-                Toast.makeText(activity,"Successfully Logged In",Toast.LENGTH_SHORT).show()
-                val main = Intent(activity, MainActivity::class.java)
-                activity.startActivity(main)
-            }
-            else{
-                Log.d("LOGIN","User credential is wrong or not registered")
-                Toast.makeText(activity,"User is not registered or wrong credentials",Toast.LENGTH_SHORT).show()
+                result = true
             }
         }
-    }
-
-    fun getUserID() : String?{
-        return FirebaseAuth.getInstance().currentUser?.uid
+        return result
     }
 
     fun registerUsingGoogle(context: Context){

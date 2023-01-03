@@ -16,12 +16,12 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
 
-        val register = intent.getStringExtra("Register?")
+        val register = intent.getBooleanExtra("Register?",false)
         val navFragment = supportFragmentManager.findFragmentById(R.id.auth_fragment) as NavHostFragment
         navController = navFragment.navController
         val navGraph = navController.navInflater.inflate(R.navigation.auth_nav)
 
-        val start = if (register == "1") R.id.registerFragment else R.id.loginFragment
+        val start = if (register) R.id.registerFragment else R.id.loginFragment
         navGraph.setStartDestination(start)
     }
 
@@ -29,12 +29,13 @@ class AuthActivity : AppCompatActivity() {
         return super.onSupportNavigateUp() || navController.navigateUp()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (doubleBackPressed)
             return super.onBackPressed()
         else{
             doubleBackPressed = true
-            Toast.makeText(this,"Press Back Again to Exit App", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,getString(R.string.back_button_twice_to_exit), Toast.LENGTH_SHORT).show()
         }
     }
 }
