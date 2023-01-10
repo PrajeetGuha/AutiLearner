@@ -11,6 +11,7 @@ import android.widget.Toast
 import com.airbnb.lottie.LottieAnimationView
 import stcet.project.autilearner.R
 import stcet.project.autilearner.helper.AuthO
+import stcet.project.autilearner.home.MainActivity
 
 class SplashActivity : AppCompatActivity(), View.OnClickListener {
 

@@ -1,8 +1,6 @@
 package stcet.project.autilearner.authentication
 
-import android.content.Context
 import android.content.Intent
-import android.net.ConnectivityManager
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -17,6 +15,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import stcet.project.autilearner.R
 import stcet.project.autilearner.helper.AuthO
+import stcet.project.autilearner.home.MainActivity
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

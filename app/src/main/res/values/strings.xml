@@ -36,6 +36,8 @@
     <string name="login_issues">Invalid Credentials or Check Internet</string>
     <string name="register_issue">User Already Registered</string>
 
+    <string name="dummy">Dummy</string>
+
 
     <string name="web_client_id">754874453404-f9v5tv4sh7cb1jrubjl6ptg6hv3ivea0.apps.googleusercontent.com</string>
 

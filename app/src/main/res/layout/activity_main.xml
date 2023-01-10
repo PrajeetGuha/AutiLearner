@@ -3,13 +3,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".authentication.MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".home.MainActivity">
 
-    <TextView
-        android:id="@+id/temporary"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/banner_fragment"
+        android:name="stcet.project.autilearner.home.BannerFragment"
+        android:layout_width="413dp"
+        android:layout_height="177dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_banner" />
+
+    <ScrollView
+        android:id="@+id/mainscroll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="193dp"
-        tools:layout_editor_absoluteY="219dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/banner_fragment">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/main_fragment"
+            android:name="stcet.project.autilearner.home.MainFragment"
+            android:layout_width="411dp"
+            android:layout_height="465dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/banner_fragment"
+            tools:layout="@layout/fragment_main" />
+    </ScrollView>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_fragment"
+        android:name="stcet.project.autilearner.home.BottomNavFragment"
+        android:layout_width="411dp"
+        android:layout_height="89dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout="@layout/fragment_bottomnav" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

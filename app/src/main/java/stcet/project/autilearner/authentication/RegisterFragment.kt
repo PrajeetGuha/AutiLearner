@@ -16,6 +16,7 @@ import com.google.android.material.textfield.TextInputLayout
 import stcet.project.autilearner.R
 import stcet.project.autilearner.helper.AuthO
 import stcet.project.autilearner.helper.Validation
+import stcet.project.autilearner.home.MainActivity
 
 class RegisterFragment : Fragment(R.layout.fragment_register){
 

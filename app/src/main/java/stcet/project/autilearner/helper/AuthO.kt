@@ -1,13 +1,9 @@
 package stcet.project.autilearner.helper
 
 import android.content.Context
-import android.content.Intent
-import android.util.Log
-import android.widget.Toast
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import stcet.project.autilearner.authentication.MainActivity
 import stcet.project.autilearner.R
 
 class AuthO {

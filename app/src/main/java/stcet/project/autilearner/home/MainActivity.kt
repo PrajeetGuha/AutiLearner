@@ -1,4 +1,4 @@
-package stcet.project.autilearner.authentication
+package stcet.project.autilearner.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -12,5 +12,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val auth = AuthO()
+
     }
 }

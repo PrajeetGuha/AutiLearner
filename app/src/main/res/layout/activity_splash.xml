@@ -35,23 +35,23 @@
         app:layout_constraintTop_toBottomOf="@+id/loading" />
 
     <Button
-        android:id="@+id/loginbutton"
+        android:id="@+id/registerbutton"
         style="@style/primaryButton"
         android:layout_marginTop="50dp"
-        android:text="@string/alreadyAccount"
+        android:text="@string/createNewAccount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tagline" />
 
     <Button
-        android:id="@+id/registerbutton"
+        android:id="@+id/loginbutton"
         style="@style/secondaryButton"
         android:layout_marginTop="15dp"
-        android:text="@string/createNewAccount"
+        android:text="@string/alreadyAccount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.464"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginbutton" />
+        app:layout_constraintTop_toBottomOf="@+id/registerbutton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
