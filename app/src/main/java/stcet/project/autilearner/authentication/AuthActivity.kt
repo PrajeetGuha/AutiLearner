@@ -24,6 +24,7 @@ class AuthActivity : AppCompatActivity() {
 
         val start = if (register == true) R.id.registerFragment else R.id.loginFragment
         navGraph.setStartDestination(start)
+        navController.graph = navGraph
     }
 
     override fun onSupportNavigateUp(): Boolean {

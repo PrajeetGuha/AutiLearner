@@ -19,6 +19,7 @@
             tools:ignore="LockedOrientationActivity"
             android:exported="true">
 
+
         </activity>
         <activity android:name=".home.MainActivity"
             android:label="@string/activity_main"
