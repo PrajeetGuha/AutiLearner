@@ -16,15 +16,15 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout="@layout/fragment_banner" />
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/main_fragment"
-            android:name="stcet.project.autilearner.home.MainFragment"
-            android:layout_width="411dp"
-            android:layout_height="465dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/banner_fragment"
-            tools:layout="@layout/fragment_main" />
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/main_fragment"
+        android:name="stcet.project.autilearner.home.MainFragment"
+        android:layout_width="411dp"
+        android:layout_height="465dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/banner_fragment"
+        tools:layout="@layout/fragment_main" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_fragment"
