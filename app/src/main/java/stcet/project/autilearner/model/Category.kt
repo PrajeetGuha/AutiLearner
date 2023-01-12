@@ -1,11 +1,11 @@
 package stcet.project.autilearner.model
 
-import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.firestore.DocumentReference
 
 
 data class Category(
     private val _name : String,
-    private val _image : FirebaseStorage
+    private val _image : DocumentReference
 ){
     val name
     get() = _name

@@ -19,8 +19,7 @@ class CategoriesAdapter(private val dataset: List<Category>) : RecyclerView.Adap
     }
 
     override fun getItemCount(): Int {
-//        return dataset.size
-        return 4
+        return dataset.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -29,10 +28,10 @@ class CategoriesAdapter(private val dataset: List<Category>) : RecyclerView.Adap
         return ViewHolder(view)
     }
 
-//    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
-//        super.onAttachedToRecyclerView(recyclerView)
-//        context = recyclerView.context
-//    }
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+        context = recyclerView.context
+    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.textView.text = position.toString()
