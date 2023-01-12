@@ -6,37 +6,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".home.MainActivity">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/banner_fragment"
-        android:name="stcet.project.autilearner.home.BannerFragment"
+    <FrameLayout
+        android:id="@+id/banner_frame"
         android:layout_width="413dp"
         android:layout_height="177dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/fragment_banner" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/main_fragment"
-        android:name="stcet.project.autilearner.home.MainFragment"
+        <ImageSwitcher
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ImageSwitcher>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/main_frame"
         android:layout_width="411dp"
         android:layout_height="465dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/banner_fragment"
-        tools:layout="@layout/fragment_main" />
+        app:layout_constraintTop_toBottomOf="@+id/banner_frame">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/nav_fragment"
-        android:name="stcet.project.autilearner.home.BottomNavFragment"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/category_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"/>
+
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomnav_view"
         android:layout_width="411dp"
         android:layout_height="89dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_fragment"
-        tools:layout="@layout/fragment_bottomnav" />
+        app:layout_constraintTop_toBottomOf="@+id/main_frame"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
