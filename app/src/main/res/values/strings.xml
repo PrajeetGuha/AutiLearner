@@ -37,6 +37,10 @@
     <string name="register_issue">User Already Registered</string>
 
     <string name="dummy">Dummy</string>
+    <string name="learn_and_play">Learn &amp; Play</string>
+    <string name="lets_have_fun">Let\'s have fun</string>
+    <string name="learn_emotion">Learn Emotion</string>
+    <string name="play_music">Play Music</string>
     <string name="social_story">"Look at the pictures below. Decide how does he/she feels. Then, finish the story using one of the pictures from the option."</string>
 
 

@@ -114,8 +114,9 @@
             android:id="@+id/GglLogin"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/googleg_standard_color_18" />
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/googleg_standard_color_18"
+            android:contentDescription="google icon"/>
 
         <ImageButton
             android:id="@+id/McrosftLogin"
@@ -123,14 +124,16 @@
             android:layout_height="30dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/microsoft___logo_1000x1000" />
+            android:background="@drawable/microsoft___logo_1000x1000"
+            android:contentDescription="microsoft icon"/>
 
         <ImageButton
             android:id="@+id/FbLogin"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/facebook_icon_2013" />
+            android:layout_marginStart="10dp"
+            android:background="@drawable/facebook_icon_2013"
+            android:contentDescription="facebook icon"/>
 
     </LinearLayout>
 
