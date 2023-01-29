@@ -6,29 +6,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/categoryCard1"
+        android:id="@+id/categoryCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
         app:cardElevation="10dp"
         app:contentPadding="5dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/categoryImage1"
+            android:id="@+id/categoryImage"
             android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:adjustViewBounds="true" />
+            android:layout_height="150dp"/>
 
         <TextView
-            android:id="@+id/categoryText1"
+            android:id="@+id/categoryText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
-            android:gravity="left"
-            android:padding="5dp"
-            android:text="Facebook"
-            android:textColor="@color/black" />
+            android:layout_marginTop="150dp"/>
 
     </com.google.android.material.card.MaterialCardView>
 
