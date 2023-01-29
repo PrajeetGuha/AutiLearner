@@ -14,16 +14,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageSwitcher
+        <ImageView
+            android:id="@+id/phraseOfTheDay"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </ImageSwitcher>
+            android:layout_height="match_parent"/>
 
     </FrameLayout>
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_frame"
+        android:background="@drawable/gradient_drawable"
         android:layout_width="411dp"
         android:layout_height="465dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,13 +32,20 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/category_recycler"
-            android:layout_width="match_parent"
+            android:layout_width="363dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="20dp"
             android:scrollbars="vertical"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:spanCount="2" />
 
-    </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomnav_view"
