@@ -3,6 +3,10 @@
     <string name="app_name">AutiLearner</string>
     <string name="activity_main">Main</string>
     <string name="activity_auth">Auth</string>
+    <string name="activity_emotion">Learn Emotion</string>
+    <string name="activity_learnnplay">Learn N Play</string>
+    <string name="activity_letshavefun">Let\'s Have Fun</string>
+    <string name="activity_music">Play Music</string>
 
 <!--    splash activity-->
     <string name="tagline">The new, fun platform for your special needs child!</string>

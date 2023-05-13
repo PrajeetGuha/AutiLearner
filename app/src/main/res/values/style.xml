@@ -64,5 +64,8 @@
         <item name="android:backgroundTint">@color/white</item>
         <item name="android:textColorHint">@color/textHint</item>
     </style>
+    <style name="OptionButtonStyle" parent="Widget.Material3.Button.OutlinedButton">
+
+    </style>
 
 </resources>

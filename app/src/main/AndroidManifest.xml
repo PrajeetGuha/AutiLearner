@@ -28,6 +28,8 @@
         </activity>
         <activity android:name=".home.MainActivity"
             android:label="@string/activity_main"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,6 +39,31 @@
         </activity>
         <activity android:name=".authentication.AuthActivity"
             android:label="@string/activity_auth"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".emotion.EmotionActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/activity_emotion"
+            tools:ignore="LockedOrientationActivity"
+            android:exported="true">
+        </activity>
+        <activity android:name=".learnNPlay.LearnNPlayActivity"
+            android:label="@string/activity_learnnplay"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
+            android:exported="true">
+        </activity>
+        <activity android:name=".letsHaveFun.LetsHaveFunActivity"
+            android:label="@string/activity_letshavefun"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
+            android:exported="true">
+        </activity>
+        <activity android:name=".music.MusicActivity"
+            android:label="@string/activity_music"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"
             android:exported="true">
