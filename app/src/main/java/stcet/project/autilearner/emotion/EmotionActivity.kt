@@ -4,10 +4,12 @@ import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.GradientDrawable
 import android.media.MediaPlayer
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -139,7 +141,7 @@ class EmotionActivity : AppCompatActivity() {
                         toastLayoutView.setBackgroundColor(resources.getColor(R.color.green))
                         correctAnswers += 1
                         toastLayoutView.addView(toastLayout)
-                        toastLayoutView.findViewById<TextView>(R.id.toast_text).text = "Correct Answer\nAnswer is: ${correct}"
+                        toastLayoutView.findViewById<TextView>(R.id.toast_text).text = getString(R.string.correct_answer,correct)
 //                        toastLayout.findViewById<LinearLayout>(R.id.toast_layout).setBackgroundColor(Color.GREEN)
                         mediaPlayerForCorrect.start()
                         mediaPlayerForCorrect.setOnCompletionListener {
@@ -162,7 +164,7 @@ class EmotionActivity : AppCompatActivity() {
                         val toastLayout = LayoutInflater.from(this).inflate(R.layout.custom_toast,null)
                         toastLayoutView.setBackgroundColor(resources.getColor(R.color.orange))
                         toastLayoutView.addView(toastLayout)
-                        toastLayoutView.findViewById<TextView>(R.id.toast_text).text = "Wrong Answer\nAnswer is: ${correct}"
+                        toastLayoutView.findViewById<TextView>(R.id.toast_text).text = getString(R.string.wrong_answer,correct)
                         mediaPlayerForWrong.start()
                         mediaPlayerForWrong.setOnCompletionListener {
                             if (questionNumber+1 == NUMBER_OF_QUESTIONS){
@@ -196,8 +198,11 @@ class EmotionActivity : AppCompatActivity() {
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
-
-        popupWindow.setBackgroundDrawable(ColorDrawable(Color.WHITE))
+        val color = TypedValue()
+        theme.resolveAttribute(android.R.attr.colorBackground,color,true)
+        val backgroundDrawable = GradientDrawable()
+        backgroundDrawable.setColor(color.data)
+        popupWindow.setBackgroundDrawable(backgroundDrawable)
         popupWindow.isOutsideTouchable = false
         popupWindow.isFocusable = true
         popupWindow.isTouchable = true
