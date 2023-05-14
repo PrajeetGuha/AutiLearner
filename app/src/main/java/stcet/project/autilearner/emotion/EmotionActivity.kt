@@ -1,21 +1,23 @@
 package stcet.project.autilearner.emotion
 
 import android.app.ProgressDialog
+import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.media.MediaPlayer
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.ProgressBar
+import android.view.ViewGroup
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ColorStateListInflaterCompat.inflate
 import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.lifecycleScope
+import com.google.api.Distribution.BucketOptions.Linear
 import com.google.firebase.firestore.AggregateSource
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
@@ -39,6 +41,7 @@ class EmotionActivity : AppCompatActivity() {
     private var randomSet = mutableMapOf<String,List<String>>()
     private lateinit var loadingScreen : ProgressBar
     private var count = 0
+    private var correctAnswers = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -107,6 +110,7 @@ class EmotionActivity : AppCompatActivity() {
             val option2 = contentLayout.findViewById<Button>(R.id.Option2)
             val option3 = contentLayout.findViewById<Button>(R.id.Option3)
             val option4 = contentLayout.findViewById<Button>(R.id.Option4)
+            val toastLayoutView = findViewById<ViewGroup>(R.id.toastLayout)
 
             option1.isEnabled = true
             option2.isEnabled = true
@@ -116,19 +120,27 @@ class EmotionActivity : AppCompatActivity() {
             option2.setBackgroundColor(Color.TRANSPARENT)
             option3.setBackgroundColor(Color.TRANSPARENT)
             option4.setBackgroundColor(Color.TRANSPARENT)
+            toastLayoutView.setBackgroundColor(Color.TRANSPARENT)
 
             val listOptionButtons = listOf(option1,option2,option3,option4)
 //            Log.d("CHECK")
             for(i in 0..3){
 //                Log.d("DEBUG",options[i])
+                toastLayoutView.removeAllViews()
                 listOptionButtons[i].text = options?.get(i) ?: ""
                 if ((options?.get(i) ?: "") == correct){
                     listOptionButtons[i].setOnClickListener {
-                        listOptionButtons[i].setBackgroundColor(Color.GREEN)
+                        listOptionButtons[i].setBackgroundColor(resources.getColor(R.color.green))
                         option1.isEnabled = false
                         option2.isEnabled = false
                         option3.isEnabled = false
                         option4.isEnabled = false
+                        val toastLayout = LayoutInflater.from(this).inflate(R.layout.custom_toast,null)
+                        toastLayoutView.setBackgroundColor(resources.getColor(R.color.green))
+                        correctAnswers += 1
+                        toastLayoutView.addView(toastLayout)
+                        toastLayoutView.findViewById<TextView>(R.id.toast_text).text = "Correct Answer\nAnswer is: ${correct}"
+//                        toastLayout.findViewById<LinearLayout>(R.id.toast_layout).setBackgroundColor(Color.GREEN)
                         mediaPlayerForCorrect.start()
                         mediaPlayerForCorrect.setOnCompletionListener {
                             if (questionNumber+1 == NUMBER_OF_QUESTIONS){
@@ -142,15 +154,19 @@ class EmotionActivity : AppCompatActivity() {
                 }
                 else{
                     listOptionButtons[i].setOnClickListener {
-                        listOptionButtons[i].setBackgroundColor(Color.RED)
+                        listOptionButtons[i].setBackgroundColor(resources.getColor(R.color.orange))
                         option1.isEnabled = false
                         option2.isEnabled = false
                         option3.isEnabled = false
                         option4.isEnabled = false
+                        val toastLayout = LayoutInflater.from(this).inflate(R.layout.custom_toast,null)
+                        toastLayoutView.setBackgroundColor(resources.getColor(R.color.orange))
+                        toastLayoutView.addView(toastLayout)
+                        toastLayoutView.findViewById<TextView>(R.id.toast_text).text = "Wrong Answer\nAnswer is: ${correct}"
                         mediaPlayerForWrong.start()
                         mediaPlayerForWrong.setOnCompletionListener {
                             if (questionNumber+1 == NUMBER_OF_QUESTIONS){
-
+                                showResult()
                             }
                             else{
                                 performUIUpdate(randomSet,questionNumber+1)
@@ -160,5 +176,45 @@ class EmotionActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun showResult(){
+        val intent = Intent(this,ResultActivity::class.java)
+        intent.putExtra("total_correct",correctAnswers)
+        intent.putExtra("total_questions",NUMBER_OF_QUESTIONS)
+        startActivity(intent)
+    }
+
+    override fun onBackPressed() {
+//        super.onBackPressed()
+
+        val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val popupView = inflater.inflate(R.layout.popup_layout, null)
+
+        val popupWindow = PopupWindow(
+            popupView,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+
+        popupWindow.setBackgroundDrawable(ColorDrawable(Color.WHITE))
+        popupWindow.isOutsideTouchable = false
+        popupWindow.isFocusable = true
+        popupWindow.isTouchable = true
+        popupView.rootView.isFocusable = false
+        popupView.rootView.isFocusableInTouchMode = false
+//        popupWindow.animationStyle = R.style.PopupAnimation
+
+        popupView.findViewById<Button>(R.id.moveHomeButton).setOnClickListener {
+            super.onBackPressed()
+        }
+
+        popupView.findViewById<Button>(R.id.continueButton).setOnClickListener {
+            popupWindow.dismiss()
+            popupView.rootView.isFocusable = true
+            popupView.rootView.isFocusableInTouchMode = true
+        }
+
+        popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
     }
 }

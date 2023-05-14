@@ -46,5 +46,8 @@
 
     <string name="web_client_id">754874453404-f9v5tv4sh7cb1jrubjl6ptg6hv3ivea0.apps.googleusercontent.com</string>
     <string name="phrase_of_the_day_docID">NqSO5IGSUVVwtsDLLpzr</string>
+    <string name="ExitPrompt">Do You Want to Exit? All Progress Will Be Lost</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
 </resources>
