@@ -41,7 +41,7 @@ class CategoriesAdapter(options: FirestoreRecyclerOptions<Category>) : Firestore
             parent.startActivity(intent)
         }
 
-        Picasso.get().load(model.image).error(com.google.android.material.R.drawable.mtrl_ic_error).resize(150,150).into(holder.imageView);
+        Picasso.get().load(model.image).error(com.google.android.material.R.drawable.mtrl_ic_error).resize(150,150).into(holder.imageView)
     }
 
 }

@@ -7,8 +7,9 @@
 
     <Button
         android:id="@+id/Option4"
-        style="@style/OptionButtonStyle"
+        style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="183dp"
+        android:text="Option4"
         android:layout_height="69dp"
         android:layout_marginStart="2dp"
         android:layout_marginTop="10dp"
@@ -20,8 +21,9 @@
 
     <Button
         android:id="@+id/Option3"
-        style="@style/OptionButtonStyle"
+        style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="183dp"
+        android:text="Option3"
         android:layout_height="69dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
@@ -32,8 +34,9 @@
 
     <Button
         android:id="@+id/Option2"
-        style="@style/OptionButtonStyle"
+        style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="183dp"
+        android:text="Option2"
         android:layout_height="69dp"
         android:layout_marginStart="2dp"
         android:layout_marginTop="100dp"
@@ -58,8 +61,9 @@
 
     <Button
         android:id="@+id/Option1"
-        style="@style/OptionButtonStyle"
+        style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="183dp"
+        android:text="Option1"
         android:layout_height="69dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="100dp"
