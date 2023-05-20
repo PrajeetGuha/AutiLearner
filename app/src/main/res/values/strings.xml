@@ -7,6 +7,7 @@
     <string name="activity_learnnplay">Learn N Play</string>
     <string name="activity_letshavefun">Let\'s Have Fun</string>
     <string name="activity_music">Play Music</string>
+    <string name="activity_result">Result</string>
 
 <!--    splash activity-->
     <string name="tagline">The new, fun platform for your special needs child!</string>
@@ -36,6 +37,10 @@
     <string name="loginButton">Login</string>
     <string name="alternate_login">Or login with</string>
 
+<!--    emotion activity-->
+    <string name="correct_answer" formatted="true">"Correct Answer\nAnswer is: %s"</string>
+    <string name="wrong_answer" formatted="true">"Wrong Answer\nAnswer is: %s"</string>
+
     <string name="back_button_twice_to_exit">Press Back Again to Exit App</string>
     <string name="login_issues">Invalid Credentials or Check Internet</string>
     <string name="register_issue">User Already Registered</string>
@@ -46,5 +51,8 @@
 
     <string name="web_client_id">754874453404-f9v5tv4sh7cb1jrubjl6ptg6hv3ivea0.apps.googleusercontent.com</string>
     <string name="phrase_of_the_day_docID">NqSO5IGSUVVwtsDLLpzr</string>
+    <string name="ExitPrompt">Do You Want to Exit? All Progress Will Be Lost</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
 </resources>
