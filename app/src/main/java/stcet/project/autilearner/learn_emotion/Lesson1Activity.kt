@@ -7,6 +7,7 @@ import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Layout
+import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -53,6 +54,7 @@ class Lesson1Activity : AppCompatActivity() {
                 val data = document.getString("label")
                 if (data != null) {
                     listEntries[document.id] = data
+//                    Log.d("DEBUG",listEntries.toString())
                 }
             }
             count = listEntries.size
@@ -63,12 +65,18 @@ class Lesson1Activity : AppCompatActivity() {
     private fun generateRandomSet(listOptions: MutableMap<String, String>, count : Int) {
         val chosenDocuments = listOptions.keys.shuffled().take(count)
         val randomSet = mutableMapOf<String,List<String>>()
+        var temp = mutableListOf<String>()
+        val listOfAnswers = mutableListOf<String>(*listOptions.values.toTypedArray())
         for (k in chosenDocuments) {
-            val temp = mutableListOf<String>()
             temp.add(listOptions[k] as String)
-            temp.addAll(listOptions.values.apply { remove(temp[0]) }.shuffled().take(3))
-            randomSet[k] = temp
+            listOfAnswers.remove(listOptions[k])
+            temp.addAll(listOfAnswers.shuffled().take(3))
+            listOfAnswers.add(listOptions[k] as String)
+//            Log.d("DEBUG",listOptions.toString())
+            randomSet[k] = listOf(*temp.toTypedArray())
+            temp.clear()
         }
+//        Log.d("DEBUG",randomSet.toString())
         performUIUpdate(randomSet, 0)
     }
 
@@ -156,8 +164,8 @@ class Lesson1Activity : AppCompatActivity() {
     
     private fun showResult() {
         val intent = Intent(this, ResultActivity::class.java)
-        intent.putExtra("total_correct", correctAnswers)
-        intent.putExtra("total_questions",7)
+        intent.putExtra("total_correct", correctAnswers.toString())
+        intent.putExtra("total_questions",NUMBER_OF_QUESTIONS.toString())
         startActivity(intent)
     }
 
