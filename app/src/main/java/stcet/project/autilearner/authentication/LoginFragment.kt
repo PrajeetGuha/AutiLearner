@@ -31,15 +31,16 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         loginButton.setOnClickListener{
             if (checkAllFields(view,emailView,emailLabel,passwordView,passwordLabel)){
-                if (auth.loginUser(emailView.text.toString(),passwordView.text.toString())) {
-                    Log.d("LOGIN", "User successfully logged in")
-                    val main = Intent(view.context, MainActivity::class.java)
-                    view.context.startActivity(main)
-                }
-                else{
-                    Log.d("LOGIN","User credential is wrong or not registered")
-                    Toast.makeText(view.context,getString(R.string.login_issues),Toast.LENGTH_SHORT).show()
-                }
+                auth.loginUser(emailView.text.toString(),passwordView.text.toString(),view)
+//                if (auth.loginUser(emailView.text.toString(),passwordView.text.toString())) {
+//                    Log.d("LOGIN", "User successfully logged in")
+//                    val main = Intent(view.context, MainActivity::class.java)
+//                    view.context.startActivity(main)
+//                }
+//                else{
+//                    Log.d("LOGIN","User credential is wrong or not registered")
+//                    Toast.makeText(view.context,getString(R.string.login_issues),Toast.LENGTH_SHORT).show()
+//                }
             }
         }
         redirectText.setOnClickListener{

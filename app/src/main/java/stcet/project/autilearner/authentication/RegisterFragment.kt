@@ -13,6 +13,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import stcet.project.autilearner.R
 import stcet.project.autilearner.helper.AuthO
 import stcet.project.autilearner.helper.Validation
@@ -36,15 +40,19 @@ class RegisterFragment : Fragment(R.layout.fragment_register){
 
         registerButton.setOnClickListener{
             if (checkAllFields(emailView,emailLabel,passwordView,passwordLabel,reenteredPasswordView,reenteredPasswordLabel,validate)){
-                if (auth.registerUser(emailView.text.toString(),passwordView.text.toString())){
-                    Log.d("REGISTER","User successfully registered")
-                    val main = Intent(view.context, MainActivity::class.java)
-                    view.context.startActivity(main)
+                GlobalScope.launch{
+                    auth.registerUser(emailView.text.toString(),passwordView.text.toString(),view)
                 }
-                else{
-                    Log.d("REGISTER","User registration failed")
-                    Toast.makeText(view.context,getString(R.string.register_issue),Toast.LENGTH_SHORT).show()
-                }
+
+//                if (registered){
+//                    Log.d("REGISTER","User successfully registered")
+//                    val main = Intent(view.context, MainActivity::class.java)
+//                    view.context.startActivity(main)
+//                }
+//                else{
+//                    Log.d("REGISTER","User registration failed")
+//                    Toast.makeText(view.context,getString(R.string.register_issue),Toast.LENGTH_SHORT).show()
+//                }
             }
         }
         redirectText.setOnClickListener{

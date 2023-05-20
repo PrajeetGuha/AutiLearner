@@ -1,10 +1,15 @@
 package stcet.project.autilearner.helper
 
 import android.content.Context
+import android.content.Intent
+import android.util.Log
+import android.view.View
+import android.widget.Toast
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import stcet.project.autilearner.R
+import stcet.project.autilearner.home.MainActivity
 
 class AuthO {
 
@@ -12,23 +17,32 @@ class AuthO {
         return FirebaseAuth.getInstance().currentUser
     }
 
-    fun registerUser(email : String, password : String) : Boolean{
-        var result = false
+    suspend fun registerUser(email : String, password : String, view : View){
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).addOnCompleteListener {
-            if (it.isSuccessful)
-                result = true
-        }
-        return result
-    }
-
-    fun loginUser(email: String, password: String) : Boolean{
-        var result = false
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password).addOnCompleteListener {
             if (it.isSuccessful){
-                result = true
+                Log.d("REGISTER","User successfully registered")
+                val main = Intent(view.context, MainActivity::class.java)
+                view.context.startActivity(main)
+            }
+            else{
+                Log.d("REGISTER","User registration failed")
+                Toast.makeText(view.context,"User Already Registered", Toast.LENGTH_SHORT).show()
             }
         }
-        return result
+    }
+
+    fun loginUser(email: String, password: String, view : View){
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password).addOnCompleteListener {
+            if (it.isSuccessful){
+                Log.d("LOGIN", "User successfully logged in")
+                val main = Intent(view.context, MainActivity::class.java)
+                view.context.startActivity(main)
+            }
+            else{
+                Log.d("LOGIN","User credential is wrong or not registered")
+                Toast.makeText(view.context,"Invalid Credential or Check Internet",Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     fun registerUsingGoogle(context: Context){
