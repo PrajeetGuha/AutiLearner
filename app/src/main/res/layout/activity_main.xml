@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
-            android:textColor="@color/primaryColor"
+            android:textColor="@color/primaryDarkColor"
             android:textStyle="bold"
             android:textSize="30sp"
             android:textAlignment="center"
@@ -32,12 +32,13 @@
             android:scaleType="fitXY" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Categories"
+            android:text="Pick a category"
             android:textColor="@color/secondaryDarkColor"
             android:textStyle="bold"
             android:textSize="18sp"
+            android:textAlignment="center"
             android:layout_marginStart="25dp"
             android:layout_marginTop="5dp" />
 
@@ -158,7 +159,7 @@
                         android:layout_height="140dp"
                         android:background="@color/powderBlue"
                         android:contentDescription="learn_emotion"
-                        android:src="@drawable/learn_emotion" />
+                        android:src="@drawable/learn_emotion_banner" />
 
                     <TextView
                         android:layout_width="wrap_content"

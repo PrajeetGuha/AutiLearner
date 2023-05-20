@@ -10,6 +10,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.squareup.picasso.Picasso
 import stcet.project.autilearner.R
+import stcet.project.autilearner.learn_and_play.LearnAndPlayActivity
 import stcet.project.autilearner.learn_emotion.LearnEmotionActivity
 
 class MainActivity : AppCompatActivity() {
@@ -20,21 +21,27 @@ class MainActivity : AppCompatActivity() {
         clickListener()
     }
 
-    public fun clickListener() {
-        var learnEmotionCard = findViewById<androidx.cardview.widget.CardView>(R.id.learn_emotion)
-        // variable for learn and play
+    private fun clickListener() {
+        val learnEmotionCard = findViewById<androidx.cardview.widget.CardView>(R.id.learn_emotion)
+        val learnAndPlayCard = findViewById<androidx.cardview.widget.CardView>(R.id.learn_and_play)
         // variable for lets have fun
         // variable for play music
 
         learnEmotionCard.setOnClickListener {
             openLearnEmotionActivity() }
+
+        learnAndPlayCard.setOnClickListener {
+            openLearnAndPlayActivity()
+        }
     }
 
-    public fun openLearnEmotionActivity() {
+    private fun openLearnEmotionActivity() {
         startActivity(Intent(this@MainActivity, LearnEmotionActivity::class.java))
     }
 
-    // function for learn and play
+    private fun openLearnAndPlayActivity() {
+        startActivity(Intent(this@MainActivity, LearnAndPlayActivity::class.java))
+    }
 
     // function for lets have fun
 
