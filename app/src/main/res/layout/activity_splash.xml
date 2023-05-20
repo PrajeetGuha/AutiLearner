@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".authentication.SplashActivity">
 
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="30sp"
+        android:textColor="@color/secondaryDarkColor"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="40dp" />
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/loading"
         style="@style/splashAnimation"

@@ -1,5 +1,6 @@
 package stcet.project.autilearner.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -9,67 +10,33 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.squareup.picasso.Picasso
 import stcet.project.autilearner.R
-import stcet.project.autilearner.adapter.CategoriesAdapter
-import stcet.project.autilearner.model.Category
-
+import stcet.project.autilearner.learn_emotion.LearnEmotionActivity
 
 class MainActivity : AppCompatActivity() {
-
-    private val db = FirebaseFirestore.getInstance()
-    private val categoriesCollection = db.collection("categories")
-    private val othersCollection = db.collection("others")
-    private lateinit var categoriesAdapter: CategoriesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        setRecyclerView()
-        setPhraseOfTheDay()
-        
+        clickListener()
     }
 
-    private fun setRecyclerView(){
-        val query = categoriesCollection.orderBy("ID", Query.Direction.ASCENDING)
-        val options = FirestoreRecyclerOptions.Builder<Category>()
-            .setQuery(query,Category::class.java)
-            .build()
+    public fun clickListener() {
+        var learnEmotionCard = findViewById<androidx.cardview.widget.CardView>(R.id.learn_emotion)
+        // variable for learn and play
+        // variable for lets have fun
+        // variable for play music
 
-        val recyclerView = findViewById<RecyclerView>(R.id.category_recycler)
-        categoriesAdapter = CategoriesAdapter(options)
-        recyclerView.setHasFixedSize(true)
-        recyclerView.adapter = categoriesAdapter
-
+        learnEmotionCard.setOnClickListener {
+            openLearnEmotionActivity() }
     }
 
-    private fun setPhraseOfTheDay(){
-        val imageView = findViewById<ImageView>(R.id.phraseOfTheDay)
-        val documentReference = othersCollection.document(getString(R.string.phrase_of_the_day_docID))
-        documentReference.get()
-            .addOnSuccessListener { documentSnapshot ->
-                if (documentSnapshot.exists()) {
-                    Picasso.get()
-                        .load(documentSnapshot.get("image") as String)
-                        .error(com.google.android.material.R.drawable.mtrl_ic_error)
-                        .resize(413,177)
-                        .into(imageView)
-                } else {
-                    imageView.setImageResource(com.google.android.material.R.drawable.mtrl_ic_error)
-                }
-            }
-            .addOnFailureListener { exception ->
-
-            }
-
+    public fun openLearnEmotionActivity() {
+        startActivity(Intent(this@MainActivity, LearnEmotionActivity::class.java))
     }
 
-    override fun onStart() {
-        super.onStart()
-        categoriesAdapter.startListening()
-    }
+    // function for learn and play
 
-    override fun onStop() {
-        super.onStop()
-        categoriesAdapter.stopListening()
-    }
+    // function for lets have fun
+
+    // function for play music
 }

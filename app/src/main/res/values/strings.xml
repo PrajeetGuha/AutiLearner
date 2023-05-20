@@ -1,20 +1,15 @@
 <resources>
-<!--    activity labels-->
+    <!--    activity labels-->
     <string name="app_name">AutiLearner</string>
     <string name="activity_main">Main</string>
     <string name="activity_auth">Auth</string>
-    <string name="activity_emotion">Learn Emotion</string>
-    <string name="activity_learnnplay">Learn N Play</string>
-    <string name="activity_letshavefun">Let\'s Have Fun</string>
-    <string name="activity_music">Play Music</string>
-    <string name="activity_result">Result</string>
 
-<!--    splash activity-->
+    <!--    splash activity-->
     <string name="tagline">The new, fun platform for your special needs child!</string>
     <string name="newBegin">Let\'s begin</string>
     <string name="alreadyAccount">Already have an account?</string>
 
-<!--    auth activity - register fragment-->
+    <!--    auth activity - register fragment-->
     <string name="createNewAccount">Create new Account</string>
     <string name="alreadyRegistered">Already Registered?</string>
     <string name="login">Login</string>
@@ -24,7 +19,7 @@
     <string name="confirm_password">Re-enter your Password</string>
     <string name="alternate_signup">Or sign up with</string>
 
-<!--    auth activity - login fragment-->
+    <!--    auth activity - login fragment-->
     <string name="Login">Login</string>
     <string name="doNotHaveAnAccount">Do not have an Account?</string>
     <string name="register">Register</string>
@@ -33,13 +28,9 @@
     <string name="email_invalid">Email is Invalid</string>
     <string name="password_invalid">Password should have at least 8 characters with at least 1 uppercase, 1 lowercase, 1 special and 1 digit character</string>
     <string name="confirm_password_not_matching">Password did not match</string>
-<!--    email and password string copied-->
+    <!--    email and password string copied-->
     <string name="loginButton">Login</string>
     <string name="alternate_login">Or login with</string>
-
-<!--    emotion activity-->
-    <string name="correct_answer" formatted="true">"Correct Answer\nAnswer is: %s"</string>
-    <string name="wrong_answer" formatted="true">"Wrong Answer\nAnswer is: %s"</string>
 
     <string name="back_button_twice_to_exit">Press Back Again to Exit App</string>
     <string name="login_issues">Invalid Credentials or Check Internet</string>
@@ -51,8 +42,23 @@
 
     <string name="web_client_id">754874453404-f9v5tv4sh7cb1jrubjl6ptg6hv3ivea0.apps.googleusercontent.com</string>
     <string name="phrase_of_the_day_docID">NqSO5IGSUVVwtsDLLpzr</string>
-    <string name="ExitPrompt">Do You Want to Exit? All Progress Will Be Lost</string>
+
+    <!--    Categories Card   -->
+    <string name="learn_and_play">Learn &amp; Play</string>
+    <string name="lets_have_fun">Let\'s Have Fun</string>
+    <string name="learn_emotion">Learn Emotion</string>
+    <string name="play_music">Play Music</string>
+
+    <!--    Learn Emotion Module    -->
+    <string name="lesson1_paragraph">Let\'s learn about our emotions. Understanding emotions will help you get along with others. Let\'s begin our journey!</string>
+    <string name="ExitPrompt">Do You Want to Exit? All Progress Will Be Lost!</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-
+    <string name="emotion_lesson_heading">This is Bob! \nGuess how is bob feeling today.</string>
+    <string name="correct_answer" formatted="true">"Correct Answer!\nAnswer is: %s"</string>
+    <string name="wrong_answer" formatted="true">"Wrong Answer!\nAnswer is: %s"</string>
+    <string name="result_heading">Results</string>
+    <string name="good_work">Good Work!</string>
+    <string name="result_message">You made it to the end of this lesson. Keep practising for a perfect score.</string>
+    <string name="your_score">Your Score:</string>
 </resources>
