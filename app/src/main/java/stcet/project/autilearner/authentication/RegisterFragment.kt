@@ -1,5 +1,6 @@
 package stcet.project.autilearner.authentication
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -37,11 +38,14 @@ class RegisterFragment : Fragment(R.layout.fragment_register){
         val redirectText = view.findViewById<TextView>(R.id.redirectTologinText)
         val validate = Validation()
         val auth = AuthO()
+//        val sharedPreferences = context?.getSharedPreferences("my_data", Context.MODE_PRIVATE)
 
         registerButton.setOnClickListener{
             if (checkAllFields(emailView,emailLabel,passwordView,passwordLabel,reenteredPasswordView,reenteredPasswordLabel,validate)){
                 GlobalScope.launch{
-                    auth.registerUser(emailView.text.toString(),passwordView.text.toString(),view)
+//                    if (sharedPreferences != null) {
+                        auth.registerUser(emailView.text.toString(),passwordView.text.toString(),view)
+//                    }
                 }
 
 //                if (registered){

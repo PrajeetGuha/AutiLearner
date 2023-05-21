@@ -6,6 +6,8 @@ import android.os.PersistableBundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import stcet.project.autilearner.R
+import stcet.project.autilearner.authentication.SplashActivity
+import stcet.project.autilearner.helper.AuthO
 import stcet.project.autilearner.home.MainActivity
 
 class ResultActivity : AppCompatActivity() {
@@ -22,6 +24,14 @@ class ResultActivity : AppCompatActivity() {
             append(" / ")
             append(totalMarks)
         }
+    }
+    override fun onStart() {
+        super.onStart()
+//        val user = AuthO().getUser()
+//        if(user == null){
+//            val splash = Intent(this, SplashActivity::class.java)
+//            startActivity(splash)
+//        }
     }
 
     override fun onBackPressed() {

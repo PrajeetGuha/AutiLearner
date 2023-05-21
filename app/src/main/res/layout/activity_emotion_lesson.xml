@@ -6,16 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".learn_emotion.LearnEmotionActivity" >
     
-    <ProgressBar
-        android:id="@+id/emotion_loadingProgress"
-        style="@style/Widget.AppCompat.ProgressBar"
+<!--    <ProgressBar-->
+<!--        android:id="@+id/emotion_loadingProgress"-->
+<!--        style="@style/Widget.AppCompat.ProgressBar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_gravity="center"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent" />-->
+
+    <View
+        android:id="@+id/background_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:background="@color/background_overlay"
+        android:visibility="invisible" />
 
     <LinearLayout
         android:id="@+id/emotion_content_layout"
@@ -31,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@id/emotion_loadingProgress"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

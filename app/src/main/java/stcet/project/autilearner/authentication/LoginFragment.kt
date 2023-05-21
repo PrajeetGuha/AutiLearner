@@ -1,5 +1,6 @@
 package stcet.project.autilearner.authentication
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -28,10 +29,13 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         val loginButton = view.findViewById<Button>(R.id.loginButton)
         val redirectText = view.findViewById<TextView>(R.id.redirectToRegisterText)
         val auth = AuthO()
+//        val sharedPreferences = context?.getSharedPreferences("my_data", Context.MODE_PRIVATE)
 
         loginButton.setOnClickListener{
             if (checkAllFields(view,emailView,emailLabel,passwordView,passwordLabel)){
-                auth.loginUser(emailView.text.toString(),passwordView.text.toString(),view)
+//                if (sharedPreferences != null) {
+                    auth.loginUser(emailView.text.toString(),passwordView.text.toString(),view)
+//                }
 //                if (auth.loginUser(emailView.text.toString(),passwordView.text.toString())) {
 //                    Log.d("LOGIN", "User successfully logged in")
 //                    val main = Intent(view.context, MainActivity::class.java)

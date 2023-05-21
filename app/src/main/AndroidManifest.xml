@@ -17,44 +17,53 @@
         android:theme="@style/HiddenTitleTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+<!--        <activity-->
+<!--            android:name=".authentication.SplashActivity"-->
+<!--            android:exported="true"-->
+<!--            android:label="@string/app_name"-->
+<!--            android:screenOrientation="portrait"-->
+<!--            tools:ignore="LockedOrientationActivity">-->
+<!--        </activity>-->
         <activity
-            android:name=".authentication.SplashActivity"
+            android:name=".home.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity">
+            android:label="@string/activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".home.MainActivity"
-            android:exported="true"
-            android:label="@string/activity_main">
-        </activity>
-        <activity
             android:name=".learn_emotion.LearnEmotionActivity"
             android:exported="true"
+            android:label="@string/activity_emotion_lessons"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".authentication.AuthActivity"
+<!--        <activity-->
+<!--            android:name=".authentication.AuthActivity"-->
+<!--            android:exported="true"-->
+<!--            android:label="@string/activity_auth"-->
+<!--            android:screenOrientation="portrait"-->
+<!--            tools:ignore="LockedOrientationActivity" />-->
+        <activity android:name=".learn_emotion.LessonActivity"
             android:exported="true"
-            android:label="@string/activity_auth"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
-        <activity android:name=".learn_emotion.Lesson1Activity"
-            android:exported="true"
-            android:screenOrientation="portrait"
+            android:label="@string/activity_lesson"
             tools:ignore="LockedOrientationActivity" />
         <activity android:name=".learn_emotion.ResultActivity"
             android:exported="true"
             android:screenOrientation="portrait"
+            android:label="@string/activity_result"
             tools:ignore="LockedOrientationActivity" />
         <activity android:name=".learn_and_play.LearnAndPlayActivity"
             android:exported="true"
             android:screenOrientation="portrait"
+            android:label="@string/activity_learnNplay_lessons"
+            tools:ignore="LockedOrientationActivity" />
+        <activity android:name=".learn_and_play.LessonActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:label="@string/activity_lesson"
             tools:ignore="LockedOrientationActivity" />
     </application>
 

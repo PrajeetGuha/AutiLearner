@@ -18,4 +18,5 @@
     <color name="yellow">#FFB900</color>
     <color name="darkBlue">#3b5998</color>
     <color name="powderBlue">#EAF3FB</color>
+    <color name="background_overlay">#80000000</color>
 </resources>

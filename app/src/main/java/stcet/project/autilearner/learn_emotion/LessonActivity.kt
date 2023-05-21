@@ -6,7 +6,6 @@ import android.graphics.drawable.GradientDrawable
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Layout
 import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
@@ -15,41 +14,57 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.lifecycle.lifecycleScope
+import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.SetOptions
-import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
 import stcet.project.autilearner.R
+import stcet.project.autilearner.authentication.SplashActivity
+import stcet.project.autilearner.data.UserDataManager
+import stcet.project.autilearner.helper.AuthO
 
-class Lesson1Activity : AppCompatActivity() {
+class LessonActivity : AppCompatActivity() {
 
     private var firestore = FirebaseFirestore.getInstance()
-    private var collectionReference1 = firestore.collection("emotion_lesson1")
+    private lateinit var collectionReference : CollectionReference
     private lateinit var contentLayout : LinearLayout
     private lateinit var cardLayout : View
     private lateinit var loadingScreen : ProgressBar
     private var count = 0
     private var correctAnswers = 0
     private val NUMBER_OF_QUESTIONS = 7
+    private var popupWindow : PopupWindow? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_emotion_lesson)
+//        val user = AuthO().getUser()
+//        if(user == null){
+//            val splash = Intent(this, SplashActivity::class.java)
+//            startActivity(splash)
+//        }
+        var collectionPath = when(intent.getStringExtra("lesson_number")){
+            "1" -> "emotion_lesson1"
+            "2" -> "emotion_lesson2"
+            "3" -> "emotion_lesson3"
+            "4" -> "emotion_lesson4"
+            else -> ""
+        }
+        collectionReference = firestore.collection(collectionPath)
         contentLayout = findViewById<LinearLayout>(R.id.emotion_content_layout)
         cardLayout = LayoutInflater.from(this).inflate(R.layout.emotion_option_card,null)
-        loadingScreen = findViewById<ProgressBar>(R.id.emotion_loadingProgress)
+//        loadingScreen = findViewById<ProgressBar>(R.id.emotion_loadingProgress)
 
-        loadingScreen.visibility = View.VISIBLE
+//        loadingScreen.visibility = View.VISIBLE
         lifecycleScope.launch {
             initialDataAccess()
         }
-        loadingScreen.visibility = View.INVISIBLE
+//        loadingScreen.visibility = View.INVISIBLE
     }
 
     private suspend fun initialDataAccess() {
         val listEntries = mutableMapOf<String,String>()
-        collectionReference1.get().addOnSuccessListener { querySnapshot ->
+        collectionReference.get().addOnSuccessListener { querySnapshot ->
             for (document in querySnapshot) {
                 val data = document.getString("label")
                 if (data != null) {
@@ -87,7 +102,7 @@ class Lesson1Activity : AppCompatActivity() {
         val mediaPlayerForWrong = MediaPlayer.create(this, R.raw.wrong)
         val documentId = randomSet.keys.toList()[questionNumber]
         var options = randomSet[documentId]
-        collectionReference1.document(documentId).get().addOnSuccessListener { querySnapshot ->
+        collectionReference.document(documentId).get().addOnSuccessListener { querySnapshot ->
             Picasso.get().load(querySnapshot.data?.get("image") as String).error(com.google.android.material.R.drawable.mtrl_ic_error).resize(150,150).into(cardLayout.findViewById<ImageView>(R.id.emotion_image))
             val correct = options?.get(0)
             options = options?.shuffled()
@@ -150,6 +165,7 @@ class Lesson1Activity : AppCompatActivity() {
                         mediaPlayerForWrong.start()
                         mediaPlayerForWrong.setOnCompletionListener {
                             if (questionNumber+1 == NUMBER_OF_QUESTIONS) {
+
                                 showResult()
                             }
                             else {
@@ -163,6 +179,12 @@ class Lesson1Activity : AppCompatActivity() {
     }
     
     private fun showResult() {
+//        Log.d("CHECK", UserDataManager.getInstance().getData().toString())
+//        val data = UserDataManager.getInstance().getData().toMutableMap()
+//        val presentStatus = (UserDataManager.getInstance().getData()["Learn_Emotion"] as List<*>).toMutableList()
+//        presentStatus[intent.getStringExtra("lesson_number") as Int] = correctAnswers == NUMBER_OF_QUESTIONS
+//        data["Learn_Emotion"] = presentStatus
+//        UserDataManager.getInstance().setData(data)
         val intent = Intent(this, ResultActivity::class.java)
         intent.putExtra("total_correct", correctAnswers.toString())
         intent.putExtra("total_questions",NUMBER_OF_QUESTIONS.toString())
@@ -173,28 +195,42 @@ class Lesson1Activity : AppCompatActivity() {
         val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val popupView = inflater.inflate(R.layout.popout_layout, null)
 
-        val popupWindow = PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        popupWindow = PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         val color = TypedValue()
         theme.resolveAttribute(android.R.attr.colorBackground,color,true)
         val backgroundDrawable = GradientDrawable()
         backgroundDrawable.setColor(color.data)
-        popupWindow.setBackgroundDrawable(backgroundDrawable)
-        popupWindow.isOutsideTouchable = false
-        popupWindow.isFocusable = true
-        popupWindow.isTouchable = true
+        findViewById<View>(R.id.background_overlay).visibility = View.VISIBLE
+        popupWindow?.setBackgroundDrawable(backgroundDrawable)
+        popupWindow?.isOutsideTouchable = false
+        popupWindow?.isFocusable = true
+        popupWindow?.isTouchable = true
         popupView.rootView.isFocusable = false
         popupView.rootView.isFocusableInTouchMode = false
 
         popupView.findViewById<Button>(R.id.moveHomeButton).setOnClickListener {
+            popupWindow?.dismiss()
+            popupWindow = null
             super.onBackPressed()
         }
 
         popupView.findViewById<Button>(R.id.continueButton).setOnClickListener {
-            popupWindow.dismiss()
+            popupWindow?.dismiss()
+            popupWindow = null
             popupView.rootView.isFocusable = true
             popupView.rootView.isFocusableInTouchMode = true
+            findViewById<View>(R.id.background_overlay).visibility = View.INVISIBLE
         }
 
-        popupWindow.showAtLocation(popupView, Gravity.CENTER, 0,0)
+        popupWindow?.showAtLocation(popupView, Gravity.CENTER, 0,0)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val user = AuthO().getUser()
+//        if(user == null){
+//            val splash = Intent(this, SplashActivity::class.java)
+//            startActivity(splash)
+//        }
     }
 }
