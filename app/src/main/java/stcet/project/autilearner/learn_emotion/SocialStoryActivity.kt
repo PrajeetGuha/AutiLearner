@@ -4,6 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil.setContentView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.FirebaseFirestore
 import stcet.project.autilearner.R
 
 
@@ -14,7 +17,6 @@ class SocialStoryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_social_story)
     }
 
-
     override fun onStart() {
         super.onStart()
     }
@@ -23,3 +25,4 @@ class SocialStoryActivity : AppCompatActivity() {
         val intent = Intent(this, LearnEmotionActivity::class.java)
     }
 }
+

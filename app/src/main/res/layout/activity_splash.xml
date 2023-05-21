@@ -71,7 +71,8 @@
         android:id="@+id/startbutton"
         style="@style/primaryButton"
         android:layout_marginTop="50dp"
-        android:text="Start"
+        android:text="Let's Begin"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tagline" />
