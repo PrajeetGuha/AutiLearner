@@ -31,7 +31,7 @@ class LearnNPlayLessonActivity : AppCompatActivity() {
     private lateinit var loadingScreen : ProgressBar
     private var count = 0
     private var correctAnswers = 0
-    private val NUMBER_OF_QUESTIONS = 7
+    private val NUMBER_OF_QUESTIONS = 4
     private var popupWindow : PopupWindow? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -199,6 +199,7 @@ class LearnNPlayLessonActivity : AppCompatActivity() {
         backgroundDrawable.setColor(color.data)
         findViewById<View>(R.id.background_overlay).visibility = View.VISIBLE
         popupWindow?.setBackgroundDrawable(backgroundDrawable)
+        cardLayout.findViewById<ImageView>(R.id.image).setColorFilter(Color.argb(150,0,0,0))
         popupWindow?.isOutsideTouchable = false
         popupWindow?.isFocusable = true
         popupWindow?.isTouchable = true
@@ -214,6 +215,7 @@ class LearnNPlayLessonActivity : AppCompatActivity() {
         popupView.findViewById<Button>(R.id.continueButton).setOnClickListener {
             popupWindow?.dismiss()
             popupWindow = null
+            cardLayout.findViewById<ImageView>(R.id.image).setColorFilter(Color.TRANSPARENT)
             popupView.rootView.isFocusable = true
             popupView.rootView.isFocusableInTouchMode = true
             findViewById<View>(R.id.background_overlay).visibility = View.INVISIBLE

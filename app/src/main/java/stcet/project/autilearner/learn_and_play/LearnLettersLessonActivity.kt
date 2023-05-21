@@ -140,7 +140,7 @@ class LearnLettersLessonActivity : AppCompatActivity() {
         for (i in 1..3) {
             optionSet[i].setOnClickListener {
                 toast.setBackgroundColor(resources.getColor(R.color.orange))
-                optionSet[0].setBackgroundColor(resources.getColor(R.color.orange))
+                optionSet[i].setBackgroundColor(resources.getColor(R.color.orange))
                 toast.visibility = View.VISIBLE
                 toast.findViewById<TextView>(R.id.toast_text).text =
                     getString(R.string.wrong_answer, rightAnswer)
@@ -167,7 +167,7 @@ class LearnLettersLessonActivity : AppCompatActivity() {
     private fun showResult() {
         val intent = Intent(this, LearnNPlayResultActivity::class.java)
         intent.putExtra("total_correct", correctAnswers.toString())
-        intent.putExtra("total_questions",NUMBER_OF_QUESTIONS)
+        intent.putExtra("total_questions",NUMBER_OF_QUESTIONS.toString())
         startActivity(intent)
     }
 
