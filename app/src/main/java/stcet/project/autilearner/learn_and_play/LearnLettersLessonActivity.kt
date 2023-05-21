@@ -92,7 +92,7 @@ class LearnLettersLessonActivity : AppCompatActivity() {
                             .load(choosenDocument["image"] as String)
 //                            .transform(TransparentBackgroundTransformation())
                             .error(com.google.android.material.R.drawable.mtrl_ic_error)
-                            .resize(150,150)
+                            //.resize(150,150)
                             .into(optionSet[0])
 //                        Log.d("CHECK",optionSet.count().toString())
                         for(i in 1..3){
@@ -101,7 +101,7 @@ class LearnLettersLessonActivity : AppCompatActivity() {
                                 .load(listOptions[i-1])
 //                                .transform(TransparentBackgroundTransformation())
                                 .error(com.google.android.material.R.drawable.mtrl_ic_error)
-                                .resize(150,150)
+                                //.resize(150,150)
                                 .into(optionSet[i])
                         }
                         setRightAnswerListener(choosenDocument["name"] as String,optionSet,questionNumber)
