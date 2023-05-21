@@ -226,7 +226,7 @@ class LearnNPlayLessonActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        val user = AuthO().getUser()
+//        val user = AuthO().getUser()
 //        if(user == null){
 //            val splash = Intent(this, SplashActivity::class.java)
 //            startActivity(splash)

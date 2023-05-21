@@ -34,7 +34,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         loginButton.setOnClickListener{
             if (checkAllFields(view,emailView,emailLabel,passwordView,passwordLabel)){
 //                if (sharedPreferences != null) {
-                    auth.loginUser(emailView.text.toString(),passwordView.text.toString(),view)
+//                    auth.loginUser(emailView.text.toString(),passwordView.text.toString(),view)
 //                }
 //                if (auth.loginUser(emailView.text.toString(),passwordView.text.toString())) {
 //                    Log.d("LOGIN", "User successfully logged in")
