@@ -44,7 +44,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register){
             if (checkAllFields(emailView,emailLabel,passwordView,passwordLabel,reenteredPasswordView,reenteredPasswordLabel,validate)){
                 GlobalScope.launch{
 //                    if (sharedPreferences != null) {
-                        auth.registerUser(emailView.text.toString(),passwordView.text.toString(),view)
+//                        auth.registerUser(emailView.text.toString(),passwordView.text.toString(),view)
 //                    }
                 }
 

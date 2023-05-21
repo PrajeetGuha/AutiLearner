@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.FrameLayout.LayoutParams
 import android.widget.ImageSwitcher
 
@@ -31,9 +32,9 @@ class SocialStoryActivity : AppCompatActivity() {
         imageSwitcher.setFactory {
             ImageView(this@SocialStoryActivity).apply {
                 scaleType = ImageView.ScaleType.FIT_CENTER
-                layoutParams = ImageSwitcher.LayoutParams(
-                    ImageSwitcher.LayoutParams.MATCH_PARENT,
-                    ImageSwitcher.LayoutParams.MATCH_PARENT
+                layoutParams = FrameLayout.LayoutParams(
+                    FrameLayout.LayoutParams.MATCH_PARENT,
+                    FrameLayout.LayoutParams.MATCH_PARENT
                 )
             }
         }
@@ -45,5 +46,6 @@ class SocialStoryActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         val intent = Intent(this, LearnEmotionActivity::class.java)
+        startActivity(intent)
     }
 }
