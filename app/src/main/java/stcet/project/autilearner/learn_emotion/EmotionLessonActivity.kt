@@ -199,6 +199,7 @@ class EmotionLessonActivity : AppCompatActivity() {
         backgroundDrawable.setColor(color.data)
         findViewById<View>(R.id.background_overlay).visibility = View.VISIBLE
         popupWindow?.setBackgroundDrawable(backgroundDrawable)
+        cardLayout.findViewById<ImageView>(R.id.image).setColorFilter(Color.argb(150,0,0,0))
         popupWindow?.isOutsideTouchable = false
         popupWindow?.isFocusable = true
         popupWindow?.isTouchable = true
@@ -214,6 +215,7 @@ class EmotionLessonActivity : AppCompatActivity() {
         popupView.findViewById<Button>(R.id.continueButton).setOnClickListener {
             popupWindow?.dismiss()
             popupWindow = null
+            cardLayout.findViewById<ImageView>(R.id.image).setColorFilter(Color.TRANSPARENT)
             popupView.rootView.isFocusable = true
             popupView.rootView.isFocusableInTouchMode = true
             findViewById<View>(R.id.background_overlay).visibility = View.INVISIBLE
@@ -224,7 +226,7 @@ class EmotionLessonActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        val user = AuthO().getUser()
+//        val user = AuthO().getUser()
 //        if(user == null){
 //            val splash = Intent(this, SplashActivity::class.java)
 //            startActivity(splash)

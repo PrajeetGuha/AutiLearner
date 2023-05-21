@@ -20,6 +20,7 @@ import kotlinx.coroutines.launch
 import stcet.project.autilearner.R
 import stcet.project.autilearner.helper.AuthO
 import stcet.project.autilearner.learn_emotion.ResultActivity
+import kotlin.properties.Delegates
 
 class LearnNPlayLessonActivity : AppCompatActivity() {
 
@@ -42,18 +43,13 @@ class LearnNPlayLessonActivity : AppCompatActivity() {
 //            startActivity(splash)
 //        }
         var collectionPath = when(intent.getStringExtra("category")){
-            "learnAZ" -> "learnplay_learnAZ"
             "shapes" -> "learnplay_shapes"
             "animals" -> "learnplay_animals"
             else -> ""
         }
         collectionReference = firestore.collection(collectionPath)
         contentLayout = findViewById<LinearLayout>(R.id.content_layout)
-        cardLayout = if (intent.getStringExtra("category").equals("learnAZ")){
-            LayoutInflater.from(this).inflate(R.layout.option_card_learn_az,null)
-        } else{
-            LayoutInflater.from(this).inflate(R.layout.option_card,null)
-        }
+        cardLayout = LayoutInflater.from(this).inflate(R.layout.option_card,null)
 //        loadingScreen = findViewById<ProgressBar>(R.id.emotion_loadingProgress)
 
 //        loadingScreen.visibility = View.VISIBLE
@@ -186,7 +182,7 @@ class LearnNPlayLessonActivity : AppCompatActivity() {
 //        presentStatus[intent.getStringExtra("lesson_number") as Int] = correctAnswers == NUMBER_OF_QUESTIONS
 //        data["Learn_Emotion"] = presentStatus
 //        UserDataManager.getInstance().setData(data)
-        val intent = Intent(this, ResultActivity::class.java)
+        val intent = Intent(this, LearnNPlayResultActivity::class.java)
         intent.putExtra("total_correct", correctAnswers.toString())
         intent.putExtra("total_questions",NUMBER_OF_QUESTIONS.toString())
         startActivity(intent)

@@ -65,6 +65,16 @@
             android:screenOrientation="portrait"
             android:label="@string/activity_lesson"
             tools:ignore="LockedOrientationActivity" />
+        <activity android:name=".learn_and_play.LearnLettersLessonActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:label="@string/activity_lesson"
+            tools:ignore="LockedOrientationActivity" />
+        <activity android:name=".learn_and_play.LearnNPlayResultActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:label="@string/activity_result"
+            tools:ignore="LockedOrientationActivity" />
     </application>
 
 </manifest>

@@ -31,8 +31,15 @@ class LearnAndPlayActivity : AppCompatActivity() {
     }
 
     private fun showIntent(categoryNumber : String){
-        val intent = Intent(this,LearnNPlayLessonActivity::class.java)
-        intent.putExtra("category",categoryNumber)
-        startActivity(intent)
+        if (categoryNumber == "learnAZ"){
+            val intent = Intent(this,LearnLettersLessonActivity::class.java)
+            startActivity(intent)
+        }
+        else{
+            val intent = Intent(this,LearnNPlayLessonActivity::class.java)
+            intent.putExtra("category",categoryNumber)
+            startActivity(intent)
+        }
+
     }
 }
