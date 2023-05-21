@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import stcet.project.autilearner.R
-import stcet.project.autilearner.learn_and_play.LessonActivity
 
 class LearnEmotionActivity : AppCompatActivity() {
 
@@ -43,7 +42,7 @@ class LearnEmotionActivity : AppCompatActivity() {
     }
 
     private fun openLessonActivity(lessonNumber : String) {
-        val intent = Intent(this, LessonActivity::class.java)
+        val intent = Intent(this, EmotionLessonActivity::class.java)
         intent.putExtra("lesson_number",lessonNumber)
         startActivity(intent)
     }

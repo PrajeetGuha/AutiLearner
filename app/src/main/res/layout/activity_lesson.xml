@@ -25,7 +25,7 @@
         android:visibility="invisible" />
 
     <LinearLayout
-        android:id="@+id/emotion_content_layout"
+        android:id="@+id/content_layout"
         android:layout_width="match_parent"
         android:layout_height="630dp"
         android:orientation="vertical"
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent" />
     
     <LinearLayout
-        android:id="@+id/emotion_toastLayout"
+        android:id="@+id/toastLayout"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="vertical"

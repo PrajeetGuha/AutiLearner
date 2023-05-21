@@ -16,22 +16,22 @@ class LearnAndPlayActivity : AppCompatActivity() {
     private fun clickListener() {
         val learnAZ = findViewById<CardView>(R.id.learn_AZ)
         learnAZ.setOnClickListener{
-            showIntent("1")
+            showIntent("learnAZ")
         }
 
         val learnShapes = findViewById<CardView>(R.id.learn_shapes)
-        learnAZ.setOnClickListener{
-            showIntent("2")
+        learnShapes.setOnClickListener{
+            showIntent("shapes")
         }
 
         val learnAnimals = findViewById<CardView>(R.id.learn_animals)
-        learnAZ.setOnClickListener{
-            showIntent("3")
+        learnAnimals.setOnClickListener{
+            showIntent("animals")
         }
     }
 
     private fun showIntent(categoryNumber : String){
-        val intent = Intent(this,LessonActivity::class.java)
+        val intent = Intent(this,LearnNPlayLessonActivity::class.java)
         intent.putExtra("category",categoryNumber)
         startActivity(intent)
     }

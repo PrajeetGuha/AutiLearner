@@ -45,7 +45,7 @@
 <!--            android:label="@string/activity_auth"-->
 <!--            android:screenOrientation="portrait"-->
 <!--            tools:ignore="LockedOrientationActivity" />-->
-        <activity android:name=".learn_emotion.LessonActivity"
+        <activity android:name=".learn_emotion.EmotionLessonActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:label="@string/activity_lesson"
@@ -60,7 +60,7 @@
             android:screenOrientation="portrait"
             android:label="@string/activity_learnNplay_lessons"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:name=".learn_and_play.LessonActivity"
+        <activity android:name=".learn_and_play.LearnNPlayLessonActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:label="@string/activity_lesson"

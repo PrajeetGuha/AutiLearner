@@ -6,7 +6,6 @@ import android.graphics.drawable.GradientDrawable
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -19,11 +18,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
 import stcet.project.autilearner.R
-import stcet.project.autilearner.authentication.SplashActivity
-import stcet.project.autilearner.data.UserDataManager
 import stcet.project.autilearner.helper.AuthO
 
-class LessonActivity : AppCompatActivity() {
+class EmotionLessonActivity : AppCompatActivity() {
 
     private var firestore = FirebaseFirestore.getInstance()
     private lateinit var collectionReference : CollectionReference
@@ -37,7 +34,7 @@ class LessonActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_emotion_lesson)
+        setContentView(R.layout.activity_lesson)
 //        val user = AuthO().getUser()
 //        if(user == null){
 //            val splash = Intent(this, SplashActivity::class.java)
@@ -51,10 +48,9 @@ class LessonActivity : AppCompatActivity() {
             else -> ""
         }
         collectionReference = firestore.collection(collectionPath)
-        contentLayout = findViewById<LinearLayout>(R.id.emotion_content_layout)
-        cardLayout = LayoutInflater.from(this).inflate(R.layout.emotion_option_card,null)
+        contentLayout = findViewById<LinearLayout>(R.id.content_layout)
+        cardLayout = LayoutInflater.from(this).inflate(R.layout.option_card,null)
 //        loadingScreen = findViewById<ProgressBar>(R.id.emotion_loadingProgress)
-
 //        loadingScreen.visibility = View.VISIBLE
         lifecycleScope.launch {
             initialDataAccess()
@@ -98,19 +94,20 @@ class LessonActivity : AppCompatActivity() {
     private fun performUIUpdate(randomSet : MutableMap<String,List<String>>, questionNumber : Int) {
         contentLayout.removeAllViews()
         contentLayout.addView(cardLayout)
+        findViewById<TextView>(R.id.lesson_heading).text = resources.getString(R.string.emotion_lesson_heading)
         val mediaPlayerForCorrect = MediaPlayer.create(this, R.raw.correct)
         val mediaPlayerForWrong = MediaPlayer.create(this, R.raw.wrong)
         val documentId = randomSet.keys.toList()[questionNumber]
         var options = randomSet[documentId]
         collectionReference.document(documentId).get().addOnSuccessListener { querySnapshot ->
-            Picasso.get().load(querySnapshot.data?.get("image") as String).error(com.google.android.material.R.drawable.mtrl_ic_error).resize(150,150).into(cardLayout.findViewById<ImageView>(R.id.emotion_image))
+            Picasso.get().load(querySnapshot.data?.get("image") as String).error(com.google.android.material.R.drawable.mtrl_ic_error).resize(150,150).into(cardLayout.findViewById<ImageView>(R.id.image))
             val correct = options?.get(0)
             options = options?.shuffled()
-            val option1 = contentLayout.findViewById<Button>(R.id.emotion_option1)
-            val option2 = contentLayout.findViewById<Button>(R.id.emotion_option2)
-            val option3 = contentLayout.findViewById<Button>(R.id.emotion_option3)
-            val option4 = contentLayout.findViewById<Button>(R.id.emotion_option4)
-            val toastLayoutView = findViewById<ViewGroup>(R.id.emotion_toastLayout)
+            val option1 = contentLayout.findViewById<Button>(R.id.option1)
+            val option2 = contentLayout.findViewById<Button>(R.id.option2)
+            val option3 = contentLayout.findViewById<Button>(R.id.option3)
+            val option4 = contentLayout.findViewById<Button>(R.id.option4)
+            val toastLayoutView = findViewById<ViewGroup>(R.id.toastLayout)
 
             option1.isEnabled = true
             option2.isEnabled = true
