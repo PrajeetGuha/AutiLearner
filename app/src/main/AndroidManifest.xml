@@ -75,6 +75,11 @@
             android:screenOrientation="portrait"
             android:label="@string/activity_result"
             tools:ignore="LockedOrientationActivity" />
+        <activity android:name=".learn_emotion.SocialStoryActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+
     </application>
 
 </manifest>

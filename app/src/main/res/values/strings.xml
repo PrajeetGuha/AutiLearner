@@ -58,7 +58,7 @@
     <string name="ExitPrompt">Do You Want to Exit? All Progress Will Be Lost!</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="emotion_lesson_heading">This is Bob! \nGuess how is bob feeling today.</string>
+    <string name="emotion_lesson_heading">This is Bob! \nGuess how is Bob feeling today.</string>
     <string name="correct_answer" formatted="true">"Correct Answer!\nAnswer is: %s"</string>
     <string name="wrong_answer" formatted="true">"Wrong Answer!\nAnswer is: %s"</string>
     <string name="result_heading">Results</string>

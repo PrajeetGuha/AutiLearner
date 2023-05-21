@@ -20,31 +20,42 @@ class LearnEmotionActivity : AppCompatActivity() {
     }
 
     private fun clickListener() {
-        var lesson1 = findViewById<Button>(R.id.emotion_lesson1)
+        val lesson1 = findViewById<Button>(R.id.emotion_lesson1)
         lesson1.setOnClickListener {
             openLessonActivity("1")
         }
 
-        var lesson2 = findViewById<Button>(R.id.emotion_lesson2)
+        val lesson2 = findViewById<Button>(R.id.emotion_lesson2)
         lesson2.setOnClickListener {
             openLessonActivity("2")
         }
 
-        var lesson3 = findViewById<Button>(R.id.emotion_lesson3)
+        val lesson3 = findViewById<Button>(R.id.emotion_lesson3)
         lesson3.setOnClickListener {
             openLessonActivity("3")
         }
 
-        var lesson4 = findViewById<Button>(R.id.emotion_lesson4)
+        val lesson4 = findViewById<Button>(R.id.emotion_lesson4)
         lesson4.setOnClickListener {
             openLessonActivity("4")
         }
+
+        val social_story = findViewById<Button>(R.id.emotion_social_story)
+        social_story.setOnClickListener {
+            openSocialStory()
+        }
+
+
     }
 
     private fun openLessonActivity(lessonNumber : String) {
         val intent = Intent(this, EmotionLessonActivity::class.java)
         intent.putExtra("lesson_number",lessonNumber)
         startActivity(intent)
+    }
+
+    private fun openSocialStory() {
+        startActivity(Intent(this, SocialStoryActivity::class.java))
     }
 
     override fun onStart() {
