@@ -33,7 +33,7 @@ class LearnLettersLessonActivity : AppCompatActivity() {
     private lateinit var mediaPlayerForCorrect : MediaPlayer
     private lateinit var mediaPlayerForWrong : MediaPlayer
     private var popupWindow : PopupWindow? = null
-    private val NUMBER_OF_QUESTIONS = 4
+    private val NUMBER_OF_QUESTIONS = 26
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

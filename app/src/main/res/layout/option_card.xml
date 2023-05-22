@@ -13,7 +13,6 @@
         android:layout_marginTop="20dp"
         android:fontFamily="sans-serif"
         android:textColor="@color/primaryDarkColor"
-        android:text="@string/emotion_lesson_heading"
         android:padding="10dp"
         android:textSize="20sp"
         android:textStyle="bold"

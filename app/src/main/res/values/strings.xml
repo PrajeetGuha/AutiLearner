@@ -59,6 +59,9 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="emotion_lesson_heading">This is Bob! \nGuess how is Bob feeling today.</string>
+    <string name="a_to_z_heading">Guess the option that starts with the given letter</string>
+    <string name="animals_lesson_heading">Guess the name of the animal</string>
+    <string name="shapes_lesson_heading">Guess the name of the shape</string>
     <string name="correct_answer" formatted="true">"Correct Answer!\nAnswer is: %s"</string>
     <string name="wrong_answer" formatted="true">"Wrong Answer!\nAnswer is: %s"</string>
     <string name="result_heading">Results</string>

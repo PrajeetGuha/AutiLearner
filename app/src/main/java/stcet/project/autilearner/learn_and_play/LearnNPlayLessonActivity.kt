@@ -31,8 +31,9 @@ class LearnNPlayLessonActivity : AppCompatActivity() {
     private lateinit var loadingScreen : ProgressBar
     private var count = 0
     private var correctAnswers = 0
-    private val NUMBER_OF_QUESTIONS = 4
+    private val NUMBER_OF_QUESTIONS = 20
     private var popupWindow : PopupWindow? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +43,8 @@ class LearnNPlayLessonActivity : AppCompatActivity() {
 //            val splash = Intent(this, SplashActivity::class.java)
 //            startActivity(splash)
 //        }
+
+
         var collectionPath = when(intent.getStringExtra("category")){
             "shapes" -> "learnplay_shapes"
             "animals" -> "learnplay_animals"
@@ -50,6 +53,15 @@ class LearnNPlayLessonActivity : AppCompatActivity() {
         collectionReference = firestore.collection(collectionPath)
         contentLayout = findViewById<LinearLayout>(R.id.content_layout)
         cardLayout = LayoutInflater.from(this).inflate(R.layout.option_card,null)
+
+        val textView = cardLayout.findViewById<TextView>(R.id.lesson_heading)
+        if (intent.getStringExtra("category") == "shapes") {
+            textView.setText(R.string.shapes_lesson_heading)
+        }
+        else {
+            textView.setText(R.string.animals_lesson_heading)
+        }
+
 //        loadingScreen = findViewById<ProgressBar>(R.id.emotion_loadingProgress)
 
 //        loadingScreen.visibility = View.VISIBLE

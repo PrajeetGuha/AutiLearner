@@ -52,6 +52,7 @@ class EmotionLessonActivity : AppCompatActivity() {
         cardLayout = LayoutInflater.from(this).inflate(R.layout.option_card,null)
 //        loadingScreen = findViewById<ProgressBar>(R.id.emotion_loadingProgress)
 //        loadingScreen.visibility = View.VISIBLE
+        cardLayout.findViewById<TextView>(R.id.lesson_heading).setText(R.string.emotion_lesson_heading)
         lifecycleScope.launch {
             initialDataAccess()
         }
