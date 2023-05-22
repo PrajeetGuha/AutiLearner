@@ -32,7 +32,7 @@ class LearnAndPlayActivity : AppCompatActivity() {
 
     private fun openLearnLetters(){
         val intent = Intent(this,LearnLettersLessonActivity::class.java)
-            startActivity(intent)
+        startActivity(intent)
     }
     private fun openLearnAnimals() {
             val intent = Intent(this, LearnAnimalsLessonActivity::class.java)
