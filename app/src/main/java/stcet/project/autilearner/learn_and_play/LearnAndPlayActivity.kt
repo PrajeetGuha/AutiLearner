@@ -16,30 +16,30 @@ class LearnAndPlayActivity : AppCompatActivity() {
     private fun clickListener() {
         val learnAZ = findViewById<CardView>(R.id.learn_AZ)
         learnAZ.setOnClickListener{
-            showIntent("learnAZ")
+            openLearnLetters()
         }
 
         val learnShapes = findViewById<CardView>(R.id.learn_shapes)
         learnShapes.setOnClickListener{
-            showIntent("shapes")
+            openLearnShapes()
         }
 
         val learnAnimals = findViewById<CardView>(R.id.learn_animals)
         learnAnimals.setOnClickListener{
-            showIntent("animals")
+            openLearnAnimals()
         }
     }
 
-    private fun showIntent(categoryNumber : String){
-        if (categoryNumber == "learnAZ"){
-            val intent = Intent(this,LearnLettersLessonActivity::class.java)
+    private fun openLearnLetters(){
+        val intent = Intent(this,LearnLettersLessonActivity::class.java)
             startActivity(intent)
-        }
-        else{
-            val intent = Intent(this,LearnNPlayLessonActivity::class.java)
-            intent.putExtra("category",categoryNumber)
+    }
+    private fun openLearnAnimals() {
+            val intent = Intent(this, LearnAnimalsLessonActivity::class.java)
             startActivity(intent)
-        }
-
+    }
+    private fun openLearnShapes() {
+        val intent = Intent(this, LearnShapesLessonActivity::class.java)
+        startActivity(intent)
     }
 }

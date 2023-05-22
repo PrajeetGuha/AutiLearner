@@ -22,17 +22,16 @@ import stcet.project.autilearner.helper.AuthO
 import stcet.project.autilearner.learn_emotion.ResultActivity
 import kotlin.properties.Delegates
 
-class LearnNPlayLessonActivity : AppCompatActivity() {
+class LearnShapesLessonActivity : AppCompatActivity() {
 
-    private var firestore = FirebaseFirestore.getInstance()
     private lateinit var collectionReference : CollectionReference
     private lateinit var contentLayout : LinearLayout
     private lateinit var cardLayout : View
     private lateinit var loadingScreen : ProgressBar
     private var count = 0
     private var correctAnswers = 0
-    private val NUMBER_OF_QUESTIONS = 20
     private var popupWindow : PopupWindow? = null
+    private val NUMBER_OF_QUESTIONS = 15
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,24 +42,17 @@ class LearnNPlayLessonActivity : AppCompatActivity() {
 //            val splash = Intent(this, SplashActivity::class.java)
 //            startActivity(splash)
 //        }
+//        var collectionPath = when(intent.getStringExtra("category")){
+//            "shapes" -> "learnplay_shapes"
+//            "animals" -> "learnplay_animals"
+//            else -> ""
+//        }
 
-
-        var collectionPath = when(intent.getStringExtra("category")){
-            "shapes" -> "learnplay_shapes"
-            "animals" -> "learnplay_animals"
-            else -> ""
-        }
-        collectionReference = firestore.collection(collectionPath)
+        collectionReference = FirebaseFirestore.getInstance().collection("learnplay_shapes")
         contentLayout = findViewById<LinearLayout>(R.id.content_layout)
         cardLayout = LayoutInflater.from(this).inflate(R.layout.option_card,null)
 
-        val textView = cardLayout.findViewById<TextView>(R.id.lesson_heading)
-        if (intent.getStringExtra("category") == "shapes") {
-            textView.setText(R.string.shapes_lesson_heading)
-        }
-        else {
-            textView.setText(R.string.animals_lesson_heading)
-        }
+        val textView = cardLayout.findViewById<TextView>(R.id.lesson_heading).setText(R.string.shapes_lesson_heading)
 
 //        loadingScreen = findViewById<ProgressBar>(R.id.emotion_loadingProgress)
 
@@ -174,7 +166,6 @@ class LearnNPlayLessonActivity : AppCompatActivity() {
                         mediaPlayerForWrong.start()
                         mediaPlayerForWrong.setOnCompletionListener {
                             if (questionNumber+1 == NUMBER_OF_QUESTIONS) {
-
                                 showResult()
                             }
                             else {
