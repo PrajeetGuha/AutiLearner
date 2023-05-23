@@ -3,6 +3,7 @@ package stcet.project.autilearner.learn_emotion
 import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import stcet.project.autilearner.R
@@ -16,6 +17,8 @@ class ResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
+        clickListener()
+
         val score = intent.getStringExtra("total_correct")
         val totalMarks = intent.getStringExtra("total_questions")
         actualResult = findViewById(R.id.score)
@@ -23,6 +26,13 @@ class ResultActivity : AppCompatActivity() {
             append(score)
             append(" / ")
             append(totalMarks)
+        }
+    }
+
+    private fun clickListener() {
+        val home = findViewById<Button>(R.id.back_to_home)
+        home.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
     override fun onStart() {

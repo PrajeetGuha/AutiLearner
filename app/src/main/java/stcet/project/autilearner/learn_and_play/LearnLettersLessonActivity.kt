@@ -22,7 +22,7 @@ import stcet.project.autilearner.R
 class LearnLettersLessonActivity : AppCompatActivity() {
 
     private lateinit var collectionReference : CollectionReference
-    private val letterSequence = "ABCDEFGIJKLMNOPQRSTUVWXYZ"
+    private val letterSequence = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     private lateinit var question : TextView
     private lateinit var option1 : ImageButton
     private lateinit var option2 : ImageButton

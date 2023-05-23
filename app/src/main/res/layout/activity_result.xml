@@ -70,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/your_score"
-            android:textSize="40sp"
+            android:textSize="35sp"
             android:textColor="@color/primaryColor"
             android:textStyle="bold"
             android:layout_marginTop="10dp"
@@ -82,7 +82,7 @@
             android:id="@+id/score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="40sp"
+            android:textSize="35sp"
             android:textColor="@color/primaryColor"
             android:textStyle="bold"
             android:layout_marginTop="10dp"
@@ -90,12 +90,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/your_score" />
 
-
-
-
-
-
-
+    <Button
+        android:id="@+id/back_to_home"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/home"
+        android:layout_marginTop="10dp"
+        android:elevation="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/score"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
