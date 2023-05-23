@@ -18,7 +18,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
 import stcet.project.autilearner.R
-import stcet.project.autilearner.helper.AuthO
 
 class EmotionLessonActivity : AppCompatActivity() {
 
@@ -35,11 +34,7 @@ class EmotionLessonActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lesson)
-//        val user = AuthO().getUser()
-//        if(user == null){
-//            val splash = Intent(this, SplashActivity::class.java)
-//            startActivity(splash)
-//        }
+
         var collectionPath = when(intent.getStringExtra("lesson_number")){
             "1" -> "emotion_lesson1"
             "2" -> "emotion_lesson2"
@@ -50,13 +45,10 @@ class EmotionLessonActivity : AppCompatActivity() {
         collectionReference = firestore.collection(collectionPath)
         contentLayout = findViewById<LinearLayout>(R.id.content_layout)
         cardLayout = LayoutInflater.from(this).inflate(R.layout.option_card,null)
-//        loadingScreen = findViewById<ProgressBar>(R.id.emotion_loadingProgress)
-//        loadingScreen.visibility = View.VISIBLE
         cardLayout.findViewById<TextView>(R.id.lesson_heading).setText(R.string.emotion_lesson_heading)
         lifecycleScope.launch {
             initialDataAccess()
         }
-//        loadingScreen.visibility = View.INVISIBLE
     }
 
     private suspend fun initialDataAccess() {
@@ -66,7 +58,6 @@ class EmotionLessonActivity : AppCompatActivity() {
                 val data = document.getString("label")
                 if (data != null) {
                     listEntries[document.id] = data
-//                    Log.d("DEBUG",listEntries.toString())
                 }
             }
             count = listEntries.size
@@ -84,11 +75,9 @@ class EmotionLessonActivity : AppCompatActivity() {
             listOfAnswers.remove(listOptions[k])
             temp.addAll(listOfAnswers.shuffled().take(3))
             listOfAnswers.add(listOptions[k] as String)
-//            Log.d("DEBUG",listOptions.toString())
             randomSet[k] = listOf(*temp.toTypedArray())
             temp.clear()
         }
-//        Log.d("DEBUG",randomSet.toString())
         performUIUpdate(randomSet, 0)
     }
 
@@ -177,12 +166,6 @@ class EmotionLessonActivity : AppCompatActivity() {
     }
     
     private fun showResult() {
-//        Log.d("CHECK", UserDataManager.getInstance().getData().toString())
-//        val data = UserDataManager.getInstance().getData().toMutableMap()
-//        val presentStatus = (UserDataManager.getInstance().getData()["Learn_Emotion"] as List<*>).toMutableList()
-//        presentStatus[intent.getStringExtra("lesson_number") as Int] = correctAnswers == NUMBER_OF_QUESTIONS
-//        data["Learn_Emotion"] = presentStatus
-//        UserDataManager.getInstance().setData(data)
         val intent = Intent(this, ResultActivity::class.java)
         intent.putExtra("total_correct", correctAnswers.toString())
         intent.putExtra("total_questions",NUMBER_OF_QUESTIONS.toString())
@@ -227,10 +210,6 @@ class EmotionLessonActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-//        val user = AuthO().getUser()
-//        if(user == null){
-//            val splash = Intent(this, SplashActivity::class.java)
-//            startActivity(splash)
-//        }
+
     }
 }
