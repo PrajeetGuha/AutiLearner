@@ -5,17 +5,13 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import stcet.project.autilearner.R
+import stcet.project.autilearner.home.MainActivity
 
 class LearnEmotionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_learn_emotion)
-//        val user = AuthO().getUser()
-//        if(user == null){
-//            val splash = Intent(this, SplashActivity::class.java)
-//            startActivity(splash)
-//        }
         clickListener()
     }
 
@@ -24,28 +20,22 @@ class LearnEmotionActivity : AppCompatActivity() {
         lesson1.setOnClickListener {
             openLessonActivity("1")
         }
-
         val lesson2 = findViewById<Button>(R.id.emotion_lesson2)
         lesson2.setOnClickListener {
             openLessonActivity("2")
         }
-
         val lesson3 = findViewById<Button>(R.id.emotion_lesson3)
         lesson3.setOnClickListener {
             openLessonActivity("3")
         }
-
         val lesson4 = findViewById<Button>(R.id.emotion_lesson4)
         lesson4.setOnClickListener {
             openLessonActivity("4")
         }
-
         val social_story = findViewById<Button>(R.id.emotion_social_story)
         social_story.setOnClickListener {
             openSocialStory()
         }
-
-
     }
 
     private fun openLessonActivity(lessonNumber : String) {
@@ -58,12 +48,10 @@ class LearnEmotionActivity : AppCompatActivity() {
         startActivity(Intent(this, SocialStoryActivity::class.java))
     }
 
-    override fun onStart() {
-        super.onStart()
-//        val user = AuthO().getUser()
-//        if(user == null){
-//            val splash = Intent(this, SplashActivity::class.java)
-//            startActivity(splash)
-//        }
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        val intent = Intent(this,MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
     }
 }

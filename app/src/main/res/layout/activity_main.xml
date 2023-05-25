@@ -34,7 +34,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pick a category"
+            android:text="@string/pick_a_category_text"
             android:textColor="@color/secondaryDarkColor"
             android:textStyle="bold"
             android:textSize="18sp"
@@ -83,7 +83,7 @@
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:background="@color/powderBlue"
-                        android:contentDescription="learn_and_play"
+                        android:contentDescription="@string/learn_and_play_description"
                         android:src="@drawable/learn_play" />
 
                     <TextView
@@ -122,7 +122,7 @@
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:background="@color/powderBlue"
-                        android:contentDescription="lets_have_fun"
+                        android:contentDescription="@string/lets_have_fun_description"
                         android:src="@drawable/lets_have_fun" />
 
                     <TextView
@@ -161,7 +161,7 @@
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:background="@color/powderBlue"
-                        android:contentDescription="learn_emotion"
+                        android:contentDescription="@string/learn_emotion_description"
                         android:src="@drawable/learn_emotion_banner" />
 
                     <TextView
@@ -200,7 +200,7 @@
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:background="@color/powderBlue"
-                        android:contentDescription="play_music"
+                        android:contentDescription="@string/play_music_description"
                         android:src="@drawable/play_music" />
 
                     <TextView

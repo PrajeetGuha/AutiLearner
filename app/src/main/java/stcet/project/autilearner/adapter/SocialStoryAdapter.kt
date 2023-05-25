@@ -12,23 +12,21 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.squareup.picasso.Picasso
 import stcet.project.autilearner.model.Story
 
-class SocialStoryAdapter(options: FirestoreRecyclerOptions<Story>) : FirestoreRecyclerAdapter<Story, SocialStoryAdapter.ViewHolder>(options) {
+class SocialStoryAdapter(options: FirestoreRecyclerOptions<Story>,
+) : FirestoreRecyclerAdapter<Story, SocialStoryAdapter.ViewHolder>(options) {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val imageView: ImageView = view.findViewById<ImageView>(R.id.story_image)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-//        Log.d("CHECK","CALLED")
         val view = LayoutInflater.from(parent.context).inflate(R.layout.social_story_image,parent,false)
-//        Log.d("CHECK","CALLED")
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int, model: Story) {
         model.image?.let { Log.d("DATA", it) }
-        Picasso.get().load(model.image).error(com.google.android.material.R.drawable.mtrl_ic_error).resize(900,900).into(holder.imageView);
+        Picasso.get().load(model.image).error(com.google.android.material.R.drawable.mtrl_ic_error).resize(900,900).into(holder.imageView)
+
     }
-
-
 }

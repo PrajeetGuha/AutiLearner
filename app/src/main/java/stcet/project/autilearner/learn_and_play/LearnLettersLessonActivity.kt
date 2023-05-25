@@ -38,7 +38,6 @@ class LearnLettersLessonActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_learnletters)
-
         collectionReference = FirebaseFirestore.getInstance().collection("learnplay_learnAZ")
         question = findViewById(R.id.question)
         option1=findViewById(R.id.option1)
@@ -48,14 +47,13 @@ class LearnLettersLessonActivity : AppCompatActivity() {
         toast=findViewById(R.id.toast_layout)
         mediaPlayerForCorrect = MediaPlayer.create(this, R.raw.correct)
         mediaPlayerForWrong = MediaPlayer.create(this, R.raw.wrong)
-
         lifecycleScope.launch{
             performUIUpdate(0)
         }
     }
 
-    private suspend fun performUIUpdate(questionNumber : Int) {
-        val optionSet = listOf<ImageButton>(option1,option2,option3,option4).shuffled()
+    private fun performUIUpdate(questionNumber : Int) {
+        val optionSet = listOf(option1,option2,option3,option4).shuffled()
         option1.isEnabled = true
         option2.isEnabled = true
         option3.isEnabled = true
@@ -65,7 +63,6 @@ class LearnLettersLessonActivity : AppCompatActivity() {
         option3.setBackgroundColor(Color.TRANSPARENT)
         option4.setBackgroundColor(Color.TRANSPARENT)
         toast.visibility = View.INVISIBLE
-
         collectionReference
             .whereEqualTo("letter",letterSequence[questionNumber].toString())
             .get()
@@ -90,18 +87,13 @@ class LearnLettersLessonActivity : AppCompatActivity() {
                         Picasso
                             .get()
                             .load(choosenDocument["image"] as String)
-//                            .transform(TransparentBackgroundTransformation())
                             .error(com.google.android.material.R.drawable.mtrl_ic_error)
-                            //.resize(150,150)
                             .into(optionSet[0])
-//                        Log.d("CHECK",optionSet.count().toString())
                         for(i in 1..3){
                             Picasso
                                 .get()
                                 .load(listOptions[i-1])
-//                                .transform(TransparentBackgroundTransformation())
                                 .error(com.google.android.material.R.drawable.mtrl_ic_error)
-                                //.resize(150,150)
                                 .into(optionSet[i])
                         }
                         setRightAnswerListener(choosenDocument["name"] as String,optionSet,questionNumber)
@@ -195,7 +187,9 @@ class LearnLettersLessonActivity : AppCompatActivity() {
         popupView.findViewById<Button>(R.id.moveHomeButton).setOnClickListener {
             popupWindow?.dismiss()
             popupWindow = null
-            super.onBackPressed()
+            val intent = Intent(this,LearnAndPlayActivity::class.java)
+            intent.flags=Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
         }
 
         popupView.findViewById<Button>(R.id.continueButton).setOnClickListener {

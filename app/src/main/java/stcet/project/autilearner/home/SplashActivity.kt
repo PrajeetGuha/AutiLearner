@@ -1,4 +1,4 @@
-package stcet.project.autilearner.authentication
+package stcet.project.autilearner.home
 
 import android.animation.ObjectAnimator
 import android.content.Intent
@@ -10,8 +10,6 @@ import android.widget.TextView
 import android.widget.Toast
 import com.airbnb.lottie.LottieAnimationView
 import stcet.project.autilearner.R
-import stcet.project.autilearner.helper.AuthO
-import stcet.project.autilearner.home.MainActivity
 
 class SplashActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -21,22 +19,8 @@ class SplashActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-
         startAnimations()
-
-//        findViewById<Button>(R.id.registerbutton).setOnClickListener(this)
-//        findViewById<Button>(R.id.loginbutton).setOnClickListener(this)
         findViewById<Button>(R.id.startbutton).setOnClickListener(this)
-    }
-
-    override fun onStart(){
-        super.onStart()
-//        val auth = AuthO()
-//        val currentUser = auth.getUser()
-//        if (auth.getUser() != null){
-//            val main = Intent(this, MainActivity::class.java)
-//            startActivity(main)
-//        }
     }
 
     override fun onResume() {
@@ -46,17 +30,6 @@ class SplashActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view : View?){
         when(view?.id){
-
-//            R.id.registerbutton -> {
-//                val auth = Intent(this, AuthActivity::class.java)
-//                auth.putExtra("Register?",true)
-//                startActivity(auth)
-//            }
-//            R.id.loginbutton -> {
-//                val auth = Intent(this, AuthActivity::class.java)
-//                auth.putExtra("Register?",false)
-//                startActivity(auth)
-//            }
             R.id.startbutton -> {
                 val start = Intent(this, MainActivity::class.java)
                 startActivity(start)
@@ -65,16 +38,10 @@ class SplashActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun startAnimations(){
-
         val animationView = findViewById<LottieAnimationView>(R.id.loading)
         val taglineView = findViewById<TextView>(R.id.tagline)
-//        val loginbutton = findViewById<Button>(R.id.loginbutton)
-//        val registerbutton = findViewById<Button>(R.id.registerbutton)
         val startbutton = findViewById<Button>(R.id.startbutton)
-
-//        val viewitems = arrayOf(animationView,taglineView,loginbutton,registerbutton)
         val viewitems = arrayOf(animationView,taglineView,startbutton)
-
         for (v in viewitems){
             v.alpha = 0f
             ObjectAnimator.ofFloat(v,"alpha",1f).apply{
@@ -85,8 +52,10 @@ class SplashActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onBackPressed() {
-        if (doubleBackPressed)
-            return super.onBackPressed()
+        if (doubleBackPressed){
+            finishAffinity()
+            finish()
+        }
         else{
             doubleBackPressed = true
             Toast.makeText(this,getString(R.string.back_button_twice_to_exit),Toast.LENGTH_SHORT).show()

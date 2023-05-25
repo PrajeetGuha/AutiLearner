@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import stcet.project.autilearner.R
+import stcet.project.autilearner.home.MainActivity
 
 class LearnAndPlayActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,12 +19,10 @@ class LearnAndPlayActivity : AppCompatActivity() {
         learnAZ.setOnClickListener{
             openLearnLetters()
         }
-
         val learnShapes = findViewById<CardView>(R.id.learn_shapes)
         learnShapes.setOnClickListener{
             openLearnShapes()
         }
-
         val learnAnimals = findViewById<CardView>(R.id.learn_animals)
         learnAnimals.setOnClickListener{
             openLearnAnimals()
@@ -40,6 +39,13 @@ class LearnAndPlayActivity : AppCompatActivity() {
     }
     private fun openLearnShapes() {
         val intent = Intent(this, LearnShapesLessonActivity::class.java)
+        startActivity(intent)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags=Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
     }
 }

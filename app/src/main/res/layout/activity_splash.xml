@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".authentication.SplashActivity">
+    tools:context=".home.SplashActivity">
 
     <TextView
         android:id="@+id/app_name"
@@ -47,25 +47,6 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loading" />
-
-<!--    <Button-->
-<!--        android:id="@+id/registerbutton"-->
-<!--        style="@style/primaryButton"-->
-<!--        android:layout_marginTop="50dp"-->
-<!--        android:text="@string/createNewAccount"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/tagline" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/loginbutton"-->
-<!--        style="@style/secondaryButton"-->
-<!--        android:layout_marginTop="15dp"-->
-<!--        android:text="@string/alreadyAccount"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.464"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/registerbutton" />-->
 
     <Button
         android:id="@+id/startbutton"

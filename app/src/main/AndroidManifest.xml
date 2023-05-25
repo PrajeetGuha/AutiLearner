@@ -18,7 +18,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".authentication.SplashActivity"
+            android:name=".home.SplashActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
@@ -39,18 +39,12 @@
             android:label="@string/activity_emotion_lessons"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
-<!--        <activity-->
-<!--            android:name=".authentication.AuthActivity"-->
-<!--            android:exported="true"-->
-<!--            android:label="@string/activity_auth"-->
-<!--            android:screenOrientation="portrait"-->
-<!--            tools:ignore="LockedOrientationActivity" />-->
         <activity android:name=".learn_emotion.EmotionLessonActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:label="@string/activity_lesson"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:name=".learn_emotion.ResultActivity"
+        <activity android:name=".learn_emotion.EmotionResultActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:label="@string/activity_result"
@@ -82,9 +76,19 @@
             tools:ignore="LockedOrientationActivity" />
         <activity android:name=".learn_emotion.SocialStoryActivity"
             android:exported="true"
+            android:label="@string/activity_social_story"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
-
+        <activity android:name=".play_music.PlayMusicActivity"
+            android:exported="true"
+            android:label="@string/activity_play_music"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity android:name=".lets_have_fun.LetsHaveFunActivity"
+            android:exported="true"
+            android:label="@string/activity_lets_have_fun"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
     </application>
 
 </manifest>

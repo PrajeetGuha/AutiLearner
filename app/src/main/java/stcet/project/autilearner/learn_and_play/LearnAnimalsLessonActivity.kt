@@ -24,8 +24,6 @@ class LearnAnimalsLessonActivity : AppCompatActivity() {
     private lateinit var collectionReference : CollectionReference
     private lateinit var contentLayout : LinearLayout
     private lateinit var cardLayout : View
-    private lateinit var loadingScreen : ProgressBar
-    private var count = 0
     private var correctAnswers = 0
     private var popupWindow : PopupWindow? = null
     private  val NUMBER_OF_QUESTIONS = 20
@@ -34,62 +32,42 @@ class LearnAnimalsLessonActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lesson)
-//        val user = AuthO().getUser()
-//        if(user == null){
-//            val splash = Intent(this, SplashActivity::class.java)
-//            startActivity(splash)
-//        }
-//        var collectionPath = when(intent.getStringExtra("category")){
-//            "shapes" -> "learnplay_shapes"
-//            "animals" -> "learnplay_animals"
-//            else -> ""
-//        }
 
         collectionReference = FirebaseFirestore.getInstance().collection("learnplay_animals")
         contentLayout = findViewById<LinearLayout>(R.id.content_layout)
         cardLayout = LayoutInflater.from(this).inflate(R.layout.option_card,null)
-
         cardLayout.findViewById<TextView>(R.id.lesson_heading).setText(R.string.animals_lesson_heading)
-
-//        loadingScreen = findViewById<ProgressBar>(R.id.emotion_loadingProgress)
-
-//        loadingScreen.visibility = View.VISIBLE
         lifecycleScope.launch {
             initialDataAccess()
         }
-//        loadingScreen.visibility = View.INVISIBLE
     }
 
-    private suspend fun initialDataAccess() {
+    private fun initialDataAccess() {
         val listEntries = mutableMapOf<String,String>()
         collectionReference.get().addOnSuccessListener { querySnapshot ->
             for (document in querySnapshot) {
                 val data = document.getString("label")
                 if (data != null) {
                     listEntries[document.id] = data
-//                    Log.d("DEBUG",listEntries.toString())
                 }
             }
-            count = listEntries.size
-            generateRandomSet(listEntries, NUMBER_OF_QUESTIONS)
+            generateRandomSet(listEntries)
         }
     }
 
-    private fun generateRandomSet(listOptions: MutableMap<String, String>, count : Int) {
-        val chosenDocuments = listOptions.keys.shuffled().take(count)
+    private fun generateRandomSet(listOptions: MutableMap<String, String>) {
+        val chosenDocuments = listOptions.keys.shuffled().take(NUMBER_OF_QUESTIONS)
         val randomSet = mutableMapOf<String,List<String>>()
-        var temp = mutableListOf<String>()
+        val temp = mutableListOf<String>()
         val listOfAnswers = mutableListOf<String>(*listOptions.values.toTypedArray())
         for (k in chosenDocuments) {
             temp.add(listOptions[k] as String)
             listOfAnswers.remove(listOptions[k])
             temp.addAll(listOfAnswers.shuffled().take(3))
             listOfAnswers.add(listOptions[k] as String)
-//            Log.d("DEBUG",listOptions.toString())
             randomSet[k] = listOf(*temp.toTypedArray())
             temp.clear()
         }
-//        Log.d("DEBUG",randomSet.toString())
         performUIUpdate(randomSet, 0)
     }
 
@@ -109,7 +87,6 @@ class LearnAnimalsLessonActivity : AppCompatActivity() {
             val option3 = contentLayout.findViewById<Button>(R.id.option3)
             val option4 = contentLayout.findViewById<Button>(R.id.option4)
             val toastLayoutView = findViewById<ViewGroup>(R.id.toastLayout)
-
             option1.isEnabled = true
             option2.isEnabled = true
             option3.isEnabled = true
@@ -119,7 +96,6 @@ class LearnAnimalsLessonActivity : AppCompatActivity() {
             option3.setBackgroundColor(Color.TRANSPARENT)
             option4.setBackgroundColor(Color.TRANSPARENT)
             toastLayoutView.setBackgroundColor(Color.TRANSPARENT)
-
             val listOptionButtons = listOf(option1,option2,option3,option4)
             for (i in 0..3) {
                 toastLayoutView.removeAllViews()
@@ -176,22 +152,16 @@ class LearnAnimalsLessonActivity : AppCompatActivity() {
     }
 
     private fun showResult() {
-//        Log.d("CHECK", UserDataManager.getInstance().getData().toString())
-//        val data = UserDataManager.getInstance().getData().toMutableMap()
-//        val presentStatus = (UserDataManager.getInstance().getData()["Learn_Emotion"] as List<*>).toMutableList()
-//        presentStatus[intent.getStringExtra("lesson_number") as Int] = correctAnswers == NUMBER_OF_QUESTIONS
-//        data["Learn_Emotion"] = presentStatus
-//        UserDataManager.getInstance().setData(data)
         val intent = Intent(this, LearnNPlayResultActivity::class.java)
         intent.putExtra("total_correct", correctAnswers.toString())
         intent.putExtra("total_questions",NUMBER_OF_QUESTIONS.toString())
         startActivity(intent)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val popupView = inflater.inflate(R.layout.popout_layout, null)
-
         popupWindow = PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         val color = TypedValue()
         theme.resolveAttribute(android.R.attr.colorBackground,color,true)
@@ -205,13 +175,13 @@ class LearnAnimalsLessonActivity : AppCompatActivity() {
         popupWindow?.isTouchable = true
         popupView.rootView.isFocusable = false
         popupView.rootView.isFocusableInTouchMode = false
-
         popupView.findViewById<Button>(R.id.moveHomeButton).setOnClickListener {
             popupWindow?.dismiss()
             popupWindow = null
-            super.onBackPressed()
+            val intent = Intent(this,LearnAndPlayActivity::class.java)
+            intent.flags=Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
         }
-
         popupView.findViewById<Button>(R.id.continueButton).setOnClickListener {
             popupWindow?.dismiss()
             popupWindow = null
@@ -220,16 +190,6 @@ class LearnAnimalsLessonActivity : AppCompatActivity() {
             popupView.rootView.isFocusableInTouchMode = true
             findViewById<View>(R.id.background_overlay).visibility = View.INVISIBLE
         }
-
         popupWindow?.showAtLocation(popupView, Gravity.CENTER, 0,0)
-    }
-
-    override fun onStart() {
-        super.onStart()
-//        val user = AuthO().getUser()
-//        if(user == null){
-//            val splash = Intent(this, SplashActivity::class.java)
-//            startActivity(splash)
-//        }
     }
 }

@@ -25,8 +25,6 @@ class EmotionLessonActivity : AppCompatActivity() {
     private lateinit var collectionReference : CollectionReference
     private lateinit var contentLayout : LinearLayout
     private lateinit var cardLayout : View
-    private lateinit var loadingScreen : ProgressBar
-    private var count = 0
     private var correctAnswers = 0
     private val NUMBER_OF_QUESTIONS = 7
     private var popupWindow : PopupWindow? = null
@@ -34,8 +32,7 @@ class EmotionLessonActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lesson)
-
-        var collectionPath = when(intent.getStringExtra("lesson_number")){
+        val collectionPath = when(intent.getStringExtra("lesson_number")){
             "1" -> "emotion_lesson1"
             "2" -> "emotion_lesson2"
             "3" -> "emotion_lesson3"
@@ -43,7 +40,7 @@ class EmotionLessonActivity : AppCompatActivity() {
             else -> ""
         }
         collectionReference = firestore.collection(collectionPath)
-        contentLayout = findViewById<LinearLayout>(R.id.content_layout)
+        contentLayout = findViewById(R.id.content_layout)
         cardLayout = LayoutInflater.from(this).inflate(R.layout.option_card,null)
         cardLayout.findViewById<TextView>(R.id.lesson_heading).setText(R.string.emotion_lesson_heading)
         lifecycleScope.launch {
@@ -51,7 +48,7 @@ class EmotionLessonActivity : AppCompatActivity() {
         }
     }
 
-    private suspend fun initialDataAccess() {
+    private fun initialDataAccess() {
         val listEntries = mutableMapOf<String,String>()
         collectionReference.get().addOnSuccessListener { querySnapshot ->
             for (document in querySnapshot) {
@@ -60,16 +57,15 @@ class EmotionLessonActivity : AppCompatActivity() {
                     listEntries[document.id] = data
                 }
             }
-            count = listEntries.size
-            generateRandomSet(listEntries, NUMBER_OF_QUESTIONS)
+            generateRandomSet(listEntries)
         }
     }
 
-    private fun generateRandomSet(listOptions: MutableMap<String, String>, count : Int) {
-        val chosenDocuments = listOptions.keys.shuffled().take(count)
+    private fun generateRandomSet(listOptions: MutableMap<String, String>) {
+        val chosenDocuments = listOptions.keys.shuffled().take(NUMBER_OF_QUESTIONS)
         val randomSet = mutableMapOf<String,List<String>>()
-        var temp = mutableListOf<String>()
-        val listOfAnswers = mutableListOf<String>(*listOptions.values.toTypedArray())
+        val temp = mutableListOf<String>()
+        val listOfAnswers = mutableListOf(*listOptions.values.toTypedArray())
         for (k in chosenDocuments) {
             temp.add(listOptions[k] as String)
             listOfAnswers.remove(listOptions[k])
@@ -166,12 +162,13 @@ class EmotionLessonActivity : AppCompatActivity() {
     }
     
     private fun showResult() {
-        val intent = Intent(this, ResultActivity::class.java)
+        val intent = Intent(this, EmotionResultActivity::class.java)
         intent.putExtra("total_correct", correctAnswers.toString())
         intent.putExtra("total_questions",NUMBER_OF_QUESTIONS.toString())
         startActivity(intent)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val popupView = inflater.inflate(R.layout.popout_layout, null)
@@ -193,7 +190,9 @@ class EmotionLessonActivity : AppCompatActivity() {
         popupView.findViewById<Button>(R.id.moveHomeButton).setOnClickListener {
             popupWindow?.dismiss()
             popupWindow = null
-            super.onBackPressed()
+            val intent = Intent(this,LearnEmotionActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
         }
 
         popupView.findViewById<Button>(R.id.continueButton).setOnClickListener {
@@ -206,10 +205,5 @@ class EmotionLessonActivity : AppCompatActivity() {
         }
 
         popupWindow?.showAtLocation(popupView, Gravity.CENTER, 0,0)
-    }
-
-    override fun onStart() {
-        super.onStart()
-
     }
 }

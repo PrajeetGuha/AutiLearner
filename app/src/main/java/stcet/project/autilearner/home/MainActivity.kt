@@ -2,16 +2,12 @@ package stcet.project.autilearner.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
-import com.firebase.ui.firestore.FirestoreRecyclerOptions
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
-import com.squareup.picasso.Picasso
 import stcet.project.autilearner.R
 import stcet.project.autilearner.learn_and_play.LearnAndPlayActivity
 import stcet.project.autilearner.learn_emotion.LearnEmotionActivity
+import stcet.project.autilearner.lets_have_fun.LetsHaveFunActivity
+import stcet.project.autilearner.play_music.PlayMusicActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,15 +20,24 @@ class MainActivity : AppCompatActivity() {
     private fun clickListener() {
         val learnEmotionCard = findViewById<androidx.cardview.widget.CardView>(R.id.learn_emotion)
         val learnAndPlayCard = findViewById<androidx.cardview.widget.CardView>(R.id.learn_and_play)
-        // variable for lets have fun
-        // variable for play music
-
+        val playMusicCard = findViewById<androidx.cardview.widget.CardView>(R.id.play_music)
+        val letsHaveFunCard = findViewById<androidx.cardview.widget.CardView>(R.id.lets_have_fun)
         learnEmotionCard.setOnClickListener {
-            openLearnEmotionActivity() }
-
+            openLearnEmotionActivity()
+        }
         learnAndPlayCard.setOnClickListener {
             openLearnAndPlayActivity()
         }
+        playMusicCard.setOnClickListener {
+            openPlayMusicActivity()
+        }
+        letsHaveFunCard.setOnClickListener {
+            openLetsHaveFunActivity()
+        }
+    }
+
+    private fun openLetsHaveFunActivity() {
+        startActivity(Intent(this@MainActivity, LetsHaveFunActivity::class.java))
     }
 
     private fun openLearnEmotionActivity() {
@@ -43,7 +48,8 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this@MainActivity, LearnAndPlayActivity::class.java))
     }
 
-    // function for lets have fun
+    private fun openPlayMusicActivity() {
+        startActivity(Intent(this@MainActivity, PlayMusicActivity::class.java))
+    }
 
-    // function for play music
 }

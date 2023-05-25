@@ -3,13 +3,16 @@ package stcet.project.autilearner.learn_and_play
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import stcet.project.autilearner.R
 import stcet.project.autilearner.home.MainActivity
 
 class LearnNPlayResultActivity : AppCompatActivity() {
     private lateinit var actualResult : TextView
+    private var doubleBackPressed = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,18 +26,27 @@ class LearnNPlayResultActivity : AppCompatActivity() {
             append(" / ")
             append(totalMarks)
         }
-    }
-    override fun onStart() {
-        super.onStart()
-//        val user = AuthO().getUser()
-//        if(user == null){
-//            val splash = Intent(this, SplashActivity::class.java)
-//            startActivity(splash)
-//        }
+        clickListener()
     }
 
+    private fun clickListener() {
+        val home = findViewById<Button>(R.id.back_to_home)
+        home.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+        }
+    }
+
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        if (doubleBackPressed){
+            finishAffinity()
+            finish()
+        }
+        else{
+            doubleBackPressed = true
+            Toast.makeText(this,getString(R.string.back_button_twice_to_exit), Toast.LENGTH_SHORT).show()
+        }
     }
 }
