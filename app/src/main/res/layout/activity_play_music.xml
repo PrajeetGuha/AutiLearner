@@ -1,6 +1,283 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".play_music.PlayMusicActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/top_layer"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/TopColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/PlayByAlphabet"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/editText"
+                app:layout_constraintHorizontal_bias="0.295"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.511"
+                tools:ignore="VisualLintBounds" />
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:autofillHints="EnterWord"
+                android:background="@drawable/edit_text_border"
+                android:backgroundTint="@color/white"
+                android:hint="@string/Enter"
+                android:inputType="text"
+                android:padding="12dp"
+                android:textColorHint="#757575"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.393"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/playButton"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:background="@drawable/button_border"
+                android:text="@string/Play"
+                android:textColor="#fff"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.065"
+                app:layout_constraintStart_toEndOf="@+id/editText"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck,VisualLintBounds" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchCompat"
+                android:layout_width="100dp"
+                android:layout_height="33dp"
+                android:text="@string/Alphabet"
+                android:textSize="10sp"
+                android:thumb="@drawable/thumb"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.609"
+                app:layout_constraintStart_toEndOf="@+id/playButton"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.513"
+                app:track="@drawable/switch_track"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </RelativeLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/scrollView"
+        android:layout_below="@+id/top_layer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/black">
+
+            <Button
+                android:id="@+id/d1"
+                style="@style/white_key_style"
+                android:layout_marginStart="3sp"
+                android:layout_marginEnd="3sp"
+                android:text="@string/a"
+                tools:ignore="TextContrastCheck" />
+
+            <Button
+                android:id="@+id/d2"
+                style="@style/white_key_style"
+                android:layout_marginEnd="3sp"
+                android:layout_toEndOf="@+id/d1"
+                android:text="@string/b"
+                tools:ignore="TextContrastCheck" />
+
+            <Button
+                android:id="@+id/d3"
+                style="@style/white_key_style"
+                android:layout_marginEnd="3sp"
+                android:layout_toEndOf="@+id/d2"
+                android:text="@string/c"
+                tools:ignore="TextContrastCheck" />
+
+            <Button
+                android:id="@+id/d4"
+                style="@style/white_key_style"
+                android:layout_marginEnd="3sp"
+                android:layout_toEndOf="@+id/d3"
+                android:text="@string/d"
+                tools:ignore="TextContrastCheck" />
+
+            <Button
+                android:id="@+id/d5"
+                style="@style/white_key_style"
+                android:layout_marginEnd="3sp"
+                android:layout_toEndOf="@+id/d4"
+                android:text="@string/e"
+                tools:ignore="TextContrastCheck" />
+
+            <Button
+                android:id="@+id/d6"
+                style="@style/white_key_style"
+                android:layout_marginEnd="3sp"
+                android:layout_toEndOf="@+id/d5"
+                android:text="@string/f"
+                tools:ignore="TextContrastCheck" />
+
+            <Button
+                android:id="@+id/d7"
+                style="@style/white_key_style"
+                android:layout_marginEnd="3sp"
+                android:layout_toEndOf="@+id/d6"
+                android:text="@string/g"
+                tools:ignore="TextContrastCheck" />
+
+            <Button
+                android:id="@+id/d8"
+                style="@style/white_key_style"
+                android:layout_marginEnd="3sp"
+                android:layout_toEndOf="@+id/d7"
+                android:text="@string/h"
+                tools:ignore="TextContrastCheck" />
+
+            <Button
+                android:id="@+id/d9"
+                style="@style/white_key_style"
+                android:layout_marginEnd="3sp"
+                android:layout_toEndOf="@+id/d8"
+                android:text="@string/i"
+                tools:ignore="TextContrastCheck" />
+            <Button
+                android:id="@+id/d10"
+                android:layout_toEndOf="@+id/d9"
+                android:layout_marginEnd="3sp"
+                android:text="@string/j"
+                style="@style/white_key_style"/>
+            <Button
+                android:id="@+id/d11"
+                android:layout_toEndOf="@+id/d10"
+                android:layout_marginEnd="3sp"
+                android:text="@string/k"
+                style="@style/white_key_style"/>
+            <Button
+                android:id="@+id/d12"
+                android:layout_toEndOf="@+id/d11"
+                android:layout_marginEnd="3sp"
+                android:text="@string/l"
+                style="@style/white_key_style"/>
+            <Button
+                android:id="@+id/d13"
+                android:layout_toEndOf="@+id/d12"
+                android:layout_marginEnd="3sp"
+                android:text="@string/m"
+                style="@style/white_key_style"/>
+            <Button
+                android:id="@+id/d14"
+                android:layout_toEndOf="@+id/d13"
+                android:layout_marginEnd="3sp"
+                android:text="@string/n"
+                style="@style/white_key_style"/>
+            <Button
+                android:id="@+id/d15"
+                android:layout_toEndOf="@+id/d14"
+                android:layout_marginEnd="3sp"
+                android:text="@string/o"
+                style="@style/white_key_style"/>
+            <Button
+                android:id="@+id/d16"
+                android:layout_toEndOf="@+id/d15"
+                android:layout_marginEnd="3sp"
+                android:text="@string/p"
+                style="@style/white_key_style"/>
+
+
+
+            <Button
+                android:id="@+id/t1"
+                style="@style/black_key_style"
+                android:text="@string/q"
+                android:layout_toEndOf="@+id/d2"
+                android:layout_toStartOf="@+id/d3" />
+            <Button
+                android:id="@+id/t2"
+                style="@style/black_key_style"
+                android:text="@string/r"
+                android:layout_toEndOf="@+id/d3"
+                android:layout_toStartOf="@+id/d4" />
+            <Button
+                android:id="@+id/t3"
+                style="@style/black_key_style"
+                android:text="@string/s"
+                android:layout_toEndOf="@+id/d5"
+                android:layout_toStartOf="@+id/d6" />
+            <Button
+                android:id="@+id/t4"
+                style="@style/black_key_style"
+                android:text="@string/t"
+                android:layout_toEndOf="@+id/d6"
+                android:layout_toStartOf="@+id/d7" />
+            <Button
+                android:id="@+id/t5"
+                style="@style/black_key_style"
+                android:text="@string/u"
+                android:layout_toEndOf="@+id/d7"
+                android:layout_toStartOf="@+id/d8" />
+
+            <Button
+                android:id="@+id/t6"
+                style="@style/black_key_style"
+                android:layout_toStartOf="@+id/d10"
+                android:layout_toEndOf="@+id/d9"
+                android:text="@string/v"
+                tools:ignore="TextContrastCheck" />
+            <Button
+                android:id="@+id/t7"
+                style="@style/black_key_style"
+                android:text="@string/w"
+                android:layout_toEndOf="@+id/d10"
+                android:layout_toStartOf="@+id/d11" />
+            <Button
+                android:id="@+id/t8"
+                style="@style/black_key_style"
+                android:text="@string/x"
+                android:layout_toEndOf="@+id/d12"
+                android:layout_toStartOf="@+id/d13" />
+            <Button
+                android:id="@+id/t9"
+                style="@style/black_key_style"
+                android:text="@string/y"
+                android:layout_toEndOf="@+id/d13"
+                android:layout_toStartOf="@+id/d14" />
+            <Button
+                android:id="@+id/t10"
+                style="@style/black_key_style"
+                android:text="@string/z"
+                android:layout_toEndOf="@+id/d14"
+                android:layout_toStartOf="@+id/d15" />
+        </RelativeLayout>
+
+    </HorizontalScrollView>
+
+</RelativeLayout>

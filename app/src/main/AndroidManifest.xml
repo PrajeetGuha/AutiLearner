@@ -82,7 +82,7 @@
         <activity android:name=".play_music.PlayMusicActivity"
             android:exported="true"
             android:label="@string/activity_play_music"
-            android:screenOrientation="portrait"
+            android:screenOrientation="landscape"
             tools:ignore="LockedOrientationActivity" />
         <activity android:name=".lets_have_fun.LetsHaveFunActivity"
             android:exported="true"
